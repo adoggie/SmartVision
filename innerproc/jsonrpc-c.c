@@ -20,6 +20,10 @@
 #include "iniparser.h"
 //#include "innerproc.h"
 
+#include <yajl/yajl_parse.h>
+#include <yajl/yajl_gen.h>
+
+
 char *heartbeat = "{\"method\":\"heartbeat\"}\n^";
 //extern app_client_t * g_app_client_list;
 //extern char g_localaddress[64];
@@ -42,12 +46,12 @@ static int send_response(struct jrpc_connection * conn, char *response) {
 	char *tmpstr = malloc(strlen(response)+2);
 	memset(tmpstr,0,strlen(response)+2);
 
-	if (conn->debug_level > 1)
+	printf("== send_response() start %d\n",time(NULL));
+//	if (conn->debug_level > 1)
 		printf("JSON Response:\n%s\n", response);
-	strcpy(tmpstr,response);
-	strncat(tmpstr,"^",1);
+	sprintf(tmpstr,"%s^",response);
 	write(fd, tmpstr, strlen(tmpstr));
-
+	printf("== send_response() end %d\n",time(NULL));
 	free(tmpstr);
 	return 0;
 }
@@ -155,7 +159,7 @@ static int eval_request(struct jrpc_server *server,
 							(id->type == cJSON_String) ? cJSON_CreateString(
 									id->valuestring) :
 									cJSON_CreateNumber(id->valueint);
-				if (server->debug_level)
+//				if (server->debug_level)
 					printf("Method Invoked: %s\n", method->valuestring);
 				//ztf for test interface not the result
 /*
@@ -178,9 +182,14 @@ static int eval_request(struct jrpc_server *server,
 static void close_connection(struct ev_loop *loop, ev_io *w) {
 	ev_io_stop(loop, w);
 	close(((struct jrpc_connection *) w)->fd);
-	free(((struct jrpc_connection *) w)->buffer);
+
+	if (((struct jrpc_connection *) w)->buffer){
+		free(((struct jrpc_connection *) w)->buffer);
+	}
 	free(((struct jrpc_connection *) w));
 }
+
+#define  MaxReadBufferSize 1024
 
 static void connection_cb(struct ev_loop *loop, ev_io *w, int revents) {
 	struct jrpc_connection *conn;
@@ -188,79 +197,163 @@ static void connection_cb(struct ev_loop *loop, ev_io *w, int revents) {
 	size_t bytes_read = 0;
 	//get our 'subclassed' event watcher
 	conn = (struct jrpc_connection *) w;
+	// jrpc_connection 结构内第一个便是ev_io,所以两者地址一样，这么玩，老夫服了
 	int fd = conn->fd;
-	if (conn->pos == (conn->buffer_size - 1)) {
-		char * new_buffer = realloc(conn->buffer, conn->buffer_size *= 2);
-		if (new_buffer == NULL) {
-			perror("Memory error");
-			return close_connection(loop, w);
-		}
-		conn->buffer = new_buffer;
-		memset(conn->buffer + conn->pos, 0, conn->buffer_size - conn->pos);
-	}
-	//send_response(conn,"test");
-	// can not fill the entire buffer, string must be NULL terminated
-	int max_read_size = conn->buffer_size - conn->pos - 1;
-	if ((bytes_read = read(fd, conn->buffer + conn->pos, max_read_size))
-			== -1) {
-		perror("read");
+
+
+	char *read_buf = malloc(MaxReadBufferSize+1);
+	int ret = 0;
+	memset(read_buf,0,MaxReadBufferSize+1);
+
+	ret = read(fd,read_buf,MaxReadBufferSize);
+	if(ret == -1){
+		perror("read failed.");
+		free(read_buf);
 		return close_connection(loop, w);
 	}
-	if (!bytes_read) {
-		// client closed the sending half of the connection
+	if(ret == 0){
+		free(read_buf);
 		if (server->debug_level)
 			printf("Client closed connection.\n");
 		return close_connection(loop, w);
-	} else {
-		cJSON *root;
-		char *end_ptr = NULL;
-		conn->pos += bytes_read;
+	}
+	printf("read data:%s\n",read_buf);
+//	free(read_buf);
+//	return ;
 
-		if ((root = cJSON_Parse_Stream(conn->buffer, &end_ptr)) != NULL) {
-			if (server->debug_level > 1) {
-				char * str_result = cJSON_Print(root);
-				printf("Valid JSON Received:\n%s\n", str_result);
-				free(str_result);
-			}
+	char * parse_buf = NULL;
 
-			if (root->type == cJSON_Object) {
-				eval_request(server, conn, root);
-			}
-			//shift processed request, discarding it
-			memmove(conn->buffer, end_ptr, strlen(end_ptr) + 2);
+	if(conn->buffer){
+		int buf_size = strlen(conn->buffer);
+		int new_size = buf_size + ret + 1 ;
+		parse_buf = malloc(new_size);
 
-			conn->pos = strlen(end_ptr);
-			memset(conn->buffer + conn->pos, 0,
-					conn->buffer_size - conn->pos - 1);
+		memset(parse_buf,0,new_size);
+		memcpy(parse_buf,conn->buffer,buf_size);
+		memcpy(parse_buf + buf_size,read_buf,ret);
+		free(conn->buffer);
+		conn->buffer = NULL;
 
-			cJSON_Delete(root);
-		} else {
-			// did we parse the all buffer? If so, just wait for more.
-			// else there was an error before the buffer's end
-			if (end_ptr != (conn->buffer + conn->pos)) {
-				if (server->debug_level) {
-					printf("INVALID JSON Received:\n---\n%s\n---\n",
-							conn->buffer);
-				}
-				send_error(conn, JRPC_PARSE_ERROR,
-						strdup(
-								"Parse error. Invalid JSON was received by the server."),
-						NULL);
-/*
-                                conn->pos = conn->buffer;
-                                memset(conn->buffer, 0,
-                                        conn->buffer_size);*/
-				return close_connection(loop, w);
-			}
+		free(read_buf);
+
+	}else{
+		parse_buf = read_buf;
+	}
+	// parse_buf  保存了当前最新的json数据缓存，可能包含多个json消息，还有不完整的json消息
+
+
+	yajl_handle hand;
+	yajl_status stat;
+	yajl_gen_config conf = { 0, "  " };
+	yajl_gen g;
+	yajl_parser_config cfg = { 1, 1 };
+
+//	g = yajl_gen_alloc(&conf, NULL); // 这个东西分配了产生内存泄露
+
+//	hand = yajl_alloc(NULL, &cfg, NULL, (void *) g);
+	hand = yajl_alloc(NULL, &cfg, NULL, NULL);
+
+	char *cursor = parse_buf;
+	stat = yajl_parse(hand, (const unsigned char*)cursor, strlen(cursor));
+
+	int consumed = 0 ;
+	while( stat == yajl_status_ok) {
+		consumed = yajl_get_bytes_consumed(hand);
+
+//		yajl_gen_clear(g);
+		yajl_free(hand);
+
+		if(consumed<=0 ){
+			printf("------------------- consumed is 0 -----------\n");
+			break;
 		}
+		char * json_msg = malloc( consumed + 1);
+		json_msg[consumed] = '\0';
+		memcpy(json_msg,cursor,consumed);
+		get_json_message(server,conn,json_msg);
+		free(json_msg);
+
+		cursor+=consumed;
+//		g = yajl_gen_alloc(&conf, NULL);
+//		hand = yajl_alloc(NULL, &cfg, NULL, (void *) g);
+		hand = yajl_alloc(NULL, &cfg, NULL, NULL);
+		stat = yajl_parse(hand, (const unsigned char*)cursor, strlen(cursor));
 	}
 
+//	yajl_gen_clear(g);
+	yajl_free(hand);
+
+
+	if(stat == yajl_status_insufficient_data ){
+		conn->buffer = malloc(strlen(cursor)+1);
+		conn->buffer[strlen(cursor)] = '\0';
+		strcpy(conn->buffer,cursor);
+	}
+
+
+
+	if (stat != yajl_status_ok && stat != yajl_status_insufficient_data){
+		on_json_message_error(loop,w,cursor);
+	}
+	free(parse_buf);
+
+}
+
+
+void on_json_message_error(struct ev_loop *loop,ev_io *w,char * msg){
+	struct jrpc_connection *conn = (struct jrpc_connection *) w;
+	struct jrpc_server *server = (struct jrpc_server *) w->data;
+
+	if (server->debug_level) {
+		printf("INVALID JSON Received:\n---\n%s\n---\n", msg);
+	}
+	send_error(conn, JRPC_PARSE_ERROR,
+			   strdup("Parse error. Invalid JSON was received by the server."), NULL);
+	return close_connection(loop, w);
+}
+
+//
+void get_json_message(struct ev_loop *loop,ev_io *w, char * msg){
+	struct jrpc_connection *conn = (struct jrpc_connection *) w;
+	struct jrpc_server *server = (struct jrpc_server *) w->data;
+
+
+	cJSON * root;
+	char * end_ptr;
+	printf("parse json message: %s \n",msg);
+	if ((root = cJSON_Parse_Stream(msg, &end_ptr)) != NULL) {
+		printf("cjson decode succ..\n");
+		if (server->debug_level > 1) {
+			char * str_result = cJSON_Print(root);
+			printf("=== Valid JSON Received:\n%s\n", str_result);
+			free(str_result);
+		}
+
+		if (root->type == cJSON_Object) {
+			eval_request(server, conn, root);
+		}
+
+		cJSON_Delete(root);
+	} else {
+		// did we parse the all buffer? If so, just wait for more.
+		// else there was an error before the buffer's end
+		on_json_message_error(loop,w,msg);
+
+//		if (server->debug_level) {
+//			printf("INVALID JSON Received:\n---\n%s\n---\n", msg);
+//		}
+//		send_error(conn, JRPC_PARSE_ERROR,
+//				   strdup("Parse error. Invalid JSON was received by the server."), NULL);
+//		return close_connection(loop, w);
+
+	}
 }
 
 static void accept_cb(struct ev_loop *loop, ev_io *w, int revents) {
 	char s[INET6_ADDRSTRLEN];
 	struct jrpc_connection *connection_watcher;
 	connection_watcher = malloc(sizeof(struct jrpc_connection));
+
 	struct sockaddr_storage their_addr; // connector's address information
 	socklen_t sin_size;
 	sin_size = sizeof their_addr;
@@ -317,10 +410,14 @@ static void accept_cb(struct ev_loop *loop, ev_io *w, int revents) {
 		ev_io_init(&connection_watcher->io, connection_cb,
 				connection_watcher->fd, EV_READ);
 		//copy pointer to struct jrpc_server
-		connection_watcher->io.data = w->data;
+		connection_watcher->io.data = w->data; // 把jsonrpc-server 带过去
+
+		connection_watcher->buffer = NULL;
+		/*
 		connection_watcher->buffer_size = 1500;
 		connection_watcher->buffer = malloc(1500);
 		memset(connection_watcher->buffer, 0, 1500);
+		 */
 		connection_watcher->pos = 0;
 		//copy debug_level, struct jrpc_connection has no pointer to struct jrpc_server
 		connection_watcher->debug_level =
@@ -337,7 +434,8 @@ int jrpc_server_init(struct jrpc_server *server, int port_number) {
 	    	connection_fd_array[i] = 0;
     	}*/
     
-    	loop = EV_DEFAULT;
+//    	loop = EV_DEFAULT;
+		loop = ev_default_loop(EVBACKEND_SELECT);
     	return jrpc_server_init_with_ev_loop(server, port_number, loop);
 }
 

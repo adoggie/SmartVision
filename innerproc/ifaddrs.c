@@ -598,4 +598,3 @@ void freeifaddrs(struct ifaddrs *ifa)
         free(l_cur);
     }
 }
-                

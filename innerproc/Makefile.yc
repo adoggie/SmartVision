@@ -1,6 +1,11 @@
+all: innerproc.yc upgrade.yc start_innerproc.yc
+.PHONY: clean
+
 TARGET = innerproc.yc
-HEADERS = cJSON.h dictionary.h sqlite3.h jsonrpc-c.h innerproc.h rc4.h ycapic.h ev.h ifaddrs.h
+HEADERS = cJSON.h dictionary.h sqlite3.h jsonrpc-c.h innerproc.h rc4.h ycapic.h ev.h ifaddrs.h 
 OBJECTS = innerproc.o cJSON.o jsonrpc-c.o rc4.o ifaddrs.o
+
+UPOBJS = md5sum.o upgrade.o
 
 ACC= ${CC}
 
@@ -9,16 +14,27 @@ LIBS= -lev -lm -lsqlite3 -ldl -liniparser -lycapic
 #LIBS= -lev -lm -lsqlite3 -ldl -liniparser
 #DEBUG= -g
 CFLAGS= -Wall -fPIE -pie 
-DEFINE= -DSQL -DANDROID -DYANGCHUANG -DBEIJING_ELEVATOR
+#DEFINE= -DSQL -DANDROID -DYANGCHUANG -DBEIJING_ELEVATOR -D_APP_WATCHDOG
+DEFINE= -DSQL -DANDROID -DYANGCHUANG -D_APP_WATCHDOG -DALL_IN_ONE
 LINK= -L .
 INCLUDE= -I .
 
 %.o: %.c $(HEADERS)
-	$(ACC) $(DEFINE) $(INCLUDE) $(ALDFLAGS) -c $< -o $@ 
+	$(ACC) $(DEFINE) $(INCLUDE) $(ALDFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS) 
 	$(ACC) $(DEBUG) $(DEFINE) $(OBJECTS) iniparser.a libsqlite3.a -o $@ $(LINK) $(INCLUDE) $(LIBS) $(CFLAGS) $(ALDFLAGS)
+	arm-linux-androideabi-strip $(TARGET)
 
+upgrade.yc: $(UPOBJS)
+	$(ACC) $(UPOBJS) -o upgrade.yc -DYANGCHUANG $(LINK) $(INCLUDE) -lycapic $(CFLAGS) $(ALDFLAGS)
+	arm-linux-androideabi-strip upgrade.yc
+	
+start_innerproc.yc: start_innerproc.o cJSON.o jsonrpc-c.o rc4.o
+	$(ACC) $(DEBUG) $(DEFINE) start_innerproc.o cJSON.o jsonrpc-c.o rc4.o -o start_innerproc.yc $(LINK) $(INCLUDE) $(LIBS) $(CFLAGS) $(ALDFLAGS)
+	arm-linux-androideabi-strip start_innerproc.yc
 clean:
 	-rm -f $(OBJECTS)
 	-rm -f $(TARGET)
+	rm -f *.o
+	rm -f upgrade.yc start_innerproc.yc

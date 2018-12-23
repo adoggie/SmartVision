@@ -1,0 +1,19 @@
+
+innerproc v1.3 
+2018/11/20
+===============
+1.修改支持 分布式（外机-内机 不走物业服务器）
+2.去除 propertyserver_netstat() 调用
+3.去除 查询outbox的定时任务（导致网络抖动）ipaddr_query_from_property() （句柄泄露）
+4.启动 看门狗
+5.版本 1.3
+6.修复 jsonrpc 不能连续处理app的消息问题，采用yajl支持streaming处理
+** 旧echo_test 运行造成网络卡顿，重新编译阿杰新echo_test，消除外机呼叫卡顿现象
+
+
+v1.4.0  2018/11/23 scott
+===============
+  1. 清除 GET_LOCAL_ADDRESS()函数 的错误处理 ，置空，机器长时间并行连接正常，无资源泄露
+  2. 实现分布式呼叫功能
+  3. 修复 假死、连接挂不断等问题
+  4. 修复 jsonrpc的解码错误代码，增加 yajl 支持 json的streaming处理

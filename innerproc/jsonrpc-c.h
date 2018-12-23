@@ -54,6 +54,7 @@ struct jrpc_server {
 	int procedure_count;
 	struct jrpc_procedure *procedures;
 	int debug_level;
+	int sock; // select socket
 };
 
 struct jrpc_connection {
@@ -63,6 +64,7 @@ struct jrpc_connection {
 	unsigned int buffer_size;
 	char * buffer;
 	int debug_level;
+	struct jrpc_server* server;
 };
 
 

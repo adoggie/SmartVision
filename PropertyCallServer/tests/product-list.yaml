@@ -1,0 +1,36 @@
+product_list:
+  - sku: 'gt03c'
+    name: '汽车强磁免安装防盗器卫星追踪器gt03c'
+    category: 'vehicle'
+    price: 200
+    description: '途强TR03 超长待机GPS定位跟踪器汽车强磁免安装防盗器卫星追踪器'
+    url: '/pages/find/product_detail'
+    image_url: 'product/gt03c/product-gt03.png'
+    slide_image_url: ''
+    content: '001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,007.jpg,008.jpg,013.jpg,023.gif,024.gif'
+    active: true
+
+  - sku: 'gt310'
+    name: '老人儿童宠物防丢防走失防盗器gt310'
+    category: 'person'
+    price: 200
+    description: '途强追踪器GT310免安装个GPS定位器老人儿童宠物防丢防走失防盗器'
+    url: '/pages/find/product_detail'
+    image_url: 'product/gt310/product-gt310.png'
+    slide_image_url: ''
+    content: '001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,006.jpg,007.jpg'
+    active: true
+
+  - sku: 'ev25'
+    name: '北斗摩托车EV25车队追踪器'
+    category: 'vehicle'
+    price: 200
+    description: ' 汽车跟踪器 gps定位器汽车防盗电动车通用租赁车贷北斗摩托车EV25车队追踪器'
+    url: '/pages/find/product_detail'
+    image_url: 'product/ev25/product-ev25.png'
+    slide_image_url: ''
+    content: '001.jpg,002.jpg,003.jpg,004.jpg,005.jpg,006.jpg,007.jpg'
+    active: true
+
+
+

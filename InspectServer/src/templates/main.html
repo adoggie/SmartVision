@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/static/images/carrun_2x.png" />
+    <title>交易策略系统</title>
+    <link type="text/css" rel="stylesheet" href="/static/style/common.css?v=20170527020">
+    <link type="text/css" rel="stylesheet" href="/static/style/blue.css?v=20170527020">
+    <link type="text/css" rel="stylesheet" href="/static/style/styles.css?v=20170527020">
+    <link rel="stylesheet" href="/static/js/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/jqueryui/jquery-ui.min.css">
+    <link rel="stylesheet" href="/static/style/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/static/style/quotes.css">
+
+{#    <script type="text/javascript"  src="/static/js/lib/jquery-1.11.1.min.js"></script>#}
+{#    <script type="text/javascript"  src="/static/js/lib/jqueryui/jquery-ui.min.js"></script>#}
+{#    <script type="text/javascript" src="/static/js/lib/bootstrap/js/bootstrap.min.js"></script>#}
+{#    <script type="text/javascript" src="/static/js/lib/bootstrap/js/bootstrap-datetimepicker.js"></script>#}
+{#    <script type="text/javascript" src="/static/js/lib/bootstrap/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>#}
+
+    <link rel="stylesheet" type="text/css" href="/static/js/lib/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/js/lib/easyui/themes/icon.css">
+
+    <script type="text/javascript" src="/static/js/lib/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/lib/easyui/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/inspector.js" ></script>
+</head>
+<body style="margin: 20px">
+<h2 >室内机-InnerBox 监控</h2>
+
+<div>
+
+    <div style="margin:5px">
+        <div>
+            <input id="ip" class="easyui-textbox"  prompt="输入查询ip, 11.0.0" style="width:180px">
+            <a id="btnFilter" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+            <span style="width: 100px"></span>
+
+            未响应主机查询
+            <select id="time" class="easyui-combobox" name="dept" style="width:200px;">
+                <option value="10"> > 10分钟</option>
+                <option value="30"> > 30分钟</option>
+                <option value="60"> > 60分钟</option>
+                <option value="720"> > 12小时</option>
+
+            </select>
+            <a id="btnQueryTimeout" href="#" class="easyui-linkbutton" >查询</a>
+
+
+
+        </div>
+
+    </div>
+    <table id="innerbox_list" class="easyui-datagrid" title="InnerBox List" style="width:100%;height:500px"
+			data-options="singleSelect:true,collapsible:false">
+		<thead>
+			<tr>
+				<th data-options="field:'ip',width:60">IP</th>
+				<th data-options="field:'port',align:'center'">Port</th>
+				<th data-options="field:'check_time_s',align:'center'">CheckTime</th>
+				<th data-options="field:'systime',align:'center'">SysTime</th>
+				<th data-options="field:'doorid'">DoorId</th>
+				<th data-options="field:'version'">Ver</th>
+				<th data-options="field:'fds'">FileNum</th>
+				<th data-options="field:'threads',align:'center'">Threads</th>
+				<th data-options="field:'mem_rss',align:'center'">RSS</th>
+
+				<th data-options="field:'mem_total',align:'center'">MemTotal</th>
+				<th data-options="field:'mem_used',align:'center'">MemUsed</th>
+				<th data-options="field:'mem_free',align:'center'">MemFree</th>
+				<th data-options="field:'pid',align:'center'">Pid</th>
+
+				<th data-options="field:'innerinterfaceip',align:'center'">室内机IP</th>
+				<th data-options="field:'outerboxip',align:'center'">室外机IP</th>
+				<th data-options="field:'outerboxip_1',align:'center'">地下室IP</th>
+				<th data-options="field:'gateouterboxip',align:'center'">围墙机IP</th>
+				<th data-options="field:'propertyip',align:'center'">物业中心服务器</th>
+				<th data-options="field:'alarmcenterip',align:'center'">报警服务器</th>
+				<th data-options="field:'callcenterip',align:'center'">呼叫中心</th>
+				<th data-options="field:'streamserverip',align:'center'">推流服务器</th>
+				<th data-options="field:'appaudiostreamurl',align:'center'">appaudiostreamurl</th>
+				<th data-options="field:'outerboxvideostreamurl',align:'center'">outerboxvideostreamurl</th>
+				<th data-options="field:'outerboxvideostreamurl_1',align:'center'">outerboxvideostreamurl_1</th>
+				<th data-options="field:'gateouterboxvideostreamurl',align:'center'">gateouterboxvideostreamurl</th>
+
+
+			</tr>
+		</thead>
+	</table>
+    <div style="margin:10px">
+        <a id="btnReboot" href="#" class="easyui-linkbutton" >设备重启</a>
+    </div>
+
+</div>
+</body>
+</html>

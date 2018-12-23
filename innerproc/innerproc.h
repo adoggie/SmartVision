@@ -1,111 +1,137 @@
-#ifndef OUTERPROC_H_
-#define OUTERPROC_H_
+#ifndef INNERPROC_H_
+#define INNERPROC_H_
+
+#include <pthread.h>
 
 #define MAX_FD_NUMBER 100
 int connection_fd_array[MAX_FD_NUMBER]; //max 100 connections on one time
 
 typedef enum app_state {
-	OFFLINE,
-	ONLINE,
-	JOINED,
-	IDLE,
-	CONNECTING,
-	CALLING
+    OFFLINE,
+    ONLINE,
+    JOINED,
+    IDLE,
+    CONNECTING,
+    CALLING
 } app_state_e;
 
 typedef enum call_type {
-	ZERO,
-	APP2PROPERTY,
-	APP2HEALTH,
-	PROPERTY2APP,
-	HEALTH2APP,
-	OUTER2APP,
-	APP2OUTER,
-	APP2APP
+    ZERO,
+    APP2PROPERTY,
+    APP2HEALTH,
+    PROPERTY2APP,
+    HEALTH2APP,
+    OUTER2APP,
+    APP2OUTER,
+    APP2APP,
 } call_type_e;
 
 typedef struct call_line_state {
-	int peersocketfd;
-	char peeripaddr[128];
-	int peerport;
-	call_type_e calltype;
+    int peersocketfd;
+    char peeripaddr[128];
+    int peerport;
+    call_type_e calltype;
 } call_line_state_t;
+
+#define GETTING_QRCODE 0x1
+#define CALLING_PROPERTY 0x2
+#define CALLING_OTHERINNER 0x4
 
 //app client struct
 typedef struct app_client {
-        char app_dev_id[512];
-	char audiostream_url[1024];
-	char audiostream_out[1024];
-	char streamserver_forapp[1024];
-	char streamserver_forout[1024];
-        int socket_fd;
-        char ip_addr_str[64];
-	char callout_ipaddr[64];
-        int port;
-        int calling_property;
-	int calling_otherinner;
-	char calling_otherdoorid[64];
-	char calling_otherinner_ip[64];
+    char app_dev_id[512];
+    char audiostream_url[1024];
+    char audiostream_out[1024];
 
-//        int online;             // app is online or not 1 for on line 0 for not
-//        int joined;             // app is joined the family or not 1 for joined 0 for not
-        char name[64];          //who use the app
-        char type[16];          //phone or pad  
-	app_state_e current_state;
-        char version[32];       //app client software version
-	int state_count;
-	call_line_state_t *line_state;
-        struct app_client * next;
+    char audiostream_push_url_outer[1024]; // scott  音频流推送url
 
+    char streamserver_forapp[1024];
+    char streamserver_forout[1024];
+    int socket_fd;
+    char ip_addr_str[64];
+    char callout_ipaddr[64];
+    int port;
+    char app_state;        //bit flag
+    //
+
+    char calling_otherdoorid[64];
+    char calling_otherinner_ip[64];
+
+    char name[64];          //who use the app
+    char type[16];          //phone or pad
+    app_state_e current_state;
+    char version[32];       //app client software version
+    int state_count;
+    call_line_state_t *line_state;
+    struct app_client *next;
+    pthread_mutex_t     mutex;  // scott
 } app_client_t;
 
 //sentrybox struct
 typedef struct sentrybox_conf {
-	char name[64];
-	char ipaddr[64];
+    char name[64];
+    char ipaddr[64];
 } sentrybox_conf_t;
 
 typedef struct basic_conf {
-        char version[64];
-        char outerboxip[64];//
-        char gateouterboxip[64];//
-        char outerboxip_1[64];// 
-        char outerinterfaceip[64];
-        char familyip[64];
-        char propertyip[64];
-	char streamserverip[64];
-	char callcenterip[64];
-	char alarmcenterip[64];
-	char doorid[64];
-	int sentryboxcount;
-	sentrybox_conf_t sentrybox[100];	
+    char version[64];
+    char outerboxip[64];//
+    char gateouterboxip[64];//
+    char outerboxip_1[64];// -1 floor basement
+
+    //use two interface when in split mode,one for inner; other for outer
+    //in integration mode two interfaces'address are same
+    char innerinterfaceip[64];    //eth0
+    char innerinterfacemask[64];
+    char innerinterfacename[64];
+    char outerinterfaceip[64];    //eth1
+    char outerinterfacemask[64];
+    char outerinterfacename[64];
+
+    char propertyip[64];
+    char streamserverip[64];
+    char callcenterip[64];
+    char alarmcenterip[64];
+    char doorid[64];
+
+    char appaudiostreamurl[256];
+    char outerboxvideostreamurl[256];
+    char outerboxvideostreamurl_1[256];
+    char gateouterboxvideostreamurl[256];
+
+    int sentryboxcount;
+    sentrybox_conf_t sentrybox[100];
 } basic_conf_t;
 
 typedef struct seczone_conf {
-        int port;
-        char name[128];
-        char normalstate[16];
-        char onekeyset[8];
-        char currentstate[8];
-        int delaytime;
-	int delaycount;
-        int nursetime;
-        char alltime[8];
-        int triggertype;
-        char online[8];
-	time_t etime;
+    int port;
+    char name[128];
+    char normalstate[16];
+    char onekeyset[8];
+    char currentstate[8];
+    int delaytime;
+    int delaycount;
+    int nursetime;
+    char alltime[8];
+    int triggertype;//报警类型
+    char online[8];
+    int gpiolevel; //报警触发点评
+    time_t etime;
+    time_t lastfailtime;
 //      struct seczone_conf *next;
 } seczone_conf_t;
 
 typedef struct innerbox_info {
-        char doorid[128];
-        char ipaddr[128];
-        struct innerbox_info * next;
+    char doorid[128];
+    char ipaddr[128];
+    struct innerbox_info *next;
 } innerbox_info_t;
 
 
 #define IN_PORT 18699
 #define OUT_PORT 5678
+#define SEC_PORT 6789
+#define OUTERBOX_PORT 7890
 #define RTSP_PORT 554
 #define HEARTBEAT_PORT 9990
 #define PROPERTY_PORT 18699
@@ -120,8 +146,8 @@ typedef struct innerbox_info {
 #define GPIO_TO_PIN(bank, gpio) (32 * (bank-'A') + (gpio))
 
 typedef struct {        
-	int pin;        
-	int data;
+    int pin;
+    int data;
 }am335x_gpio_arg;
 
 #endif
@@ -136,7 +162,7 @@ typedef struct {
 #ifndef __USE_DEBUG
 #define __USE_DEBUG
 
-#define USE_DEBUG
+//#define USE_DEBUG
 #ifdef USE_DEBUG
 
 void get_time_log(char * datetime) {
@@ -169,9 +195,9 @@ void get_time_log(char * datetime) {
 #define DEBUG_INFO(fmt, args...) printf("[%s:%d] "#fmt"\r\n", __func__, __LINE__, ##args)
 #else
 #define DEBUG_LINE()
-#define DEBUG_ERR(fmt,...)
-#define DEBUG_ERR_LOG(fmt, ...) 
-#define DEBUG_INFO(fmt,...)
+#define DEBUG_ERR(fmt, ...)
+#define DEBUG_ERR_LOG(fmt, ...)
+#define DEBUG_INFO(fmt, ...)
 #endif
 
 #endif
