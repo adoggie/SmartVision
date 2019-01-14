@@ -28,6 +28,7 @@ public:
 	void data(const Ptr& ptr){
 		data_ = ptr;
 	}
+	tgObject(){}
 private:
 	Ptr data_;
 };
@@ -50,15 +51,14 @@ private:
 
 
 enum CallPeerType{
-	INNER_BOX = 1;
-	INNER_SCREEN = 2;
-	OUTER_BOX = 3;
-	PROPERTY_APP = 4;
-	PROPERTY_CENTER = 5;
+	INNER_BOX = 1,
+	INNER_SCREEN = 2,
+	OUTER_BOX = 3,
+	PROPERTY_APP = 4,
+	PROPERTY_CENTER = 5
 	
 	
 };
-
 
 
 

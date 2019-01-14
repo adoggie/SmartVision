@@ -31,6 +31,7 @@ public:
 		if(!handle.get()){
 			handle = std::make_shared<HttpService>() ;
 		}
+		return handle;
 	}
 	
 	bool  init(const Config& cfgs);
@@ -38,8 +39,14 @@ public:
 	bool open();
 	void close();
 	void run();
-private:
-	void ev_handler(struct mg_connection *nc, int ev, void *ev_data);
+public:
+	static void ev_handler(struct mg_connection *nc, int ev, void *ev_data);
+	void handle_innerdevice_register(struct mg_connection *nc, struct http_message *hm );
+	void handle_innerdevice_remove(struct mg_connection *nc, struct http_message *hm );
+	void handle_innerdevice_discover(struct mg_connection *nc, struct http_message *hm );
+	void handle_status_query(struct mg_connection *nc, struct http_message *hm );
+	void handle_innerdevice_list(struct mg_connection *nc, struct http_message *hm );
+	
 	void thread_run();
 	
 	std::shared_ptr<std::thread> thread_;

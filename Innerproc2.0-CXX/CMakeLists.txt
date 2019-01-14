@@ -17,5 +17,6 @@ link_libraries( boost_system jsoncpp)
 
 #add_executable(innerproc main.cpp mongoose.c connection.cpp call.cpp service.cpp inner_device_mgr.cpp inner_device_mgr.h call_manager.cpp call_manager.h)
 #add_executable(innerproc main.cpp sensor.cpp watchdog.cpp )
-add_executable(innerproc main.cpp http.cpp sensor.cpp watchdog.cpp  )
+#add_executable(innerproc main.cpp http.cpp sensor.cpp watchdog.cpp  )
+add_executable(innerproc main.cpp http.cpp mongoose.c connection.cpp)
 

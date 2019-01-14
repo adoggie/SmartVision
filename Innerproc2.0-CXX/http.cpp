@@ -4,7 +4,7 @@
 
 /**
 1. 服务发现
-  url: api/smartbox/discover
+  url: /smartbox/discover
   return:
     - time : 20191123 12:00:12
     - ver : 1.0
@@ -33,7 +33,8 @@
  	params:
  	  - device_id
  	  - device_type  ios,android,screen
- 	  - box_auth_code	室内机的授权码，在室内屏可查询获得室内机的授权码，室内屏安装时直接读取box内的设置参数
+ 	  - auth_code	室内机的授权码，在室内屏可查询获得室内机的授权码，室内屏安装时直接读取box内的设置参数
+ 	  
  	return:
  	  - token  访问设备的授权码
 
@@ -46,6 +47,7 @@
      - device_id
      - device_type
      - register_time
+     - active   1: online , 0: offline
 
  3.2 删除设备
    url: api/smartbox/inner-device
@@ -88,6 +90,7 @@
  
 #include "mongoose.h"
 #include <thread>
+#include <boost/algorithm/string.hpp>
 
 static const char *s_http_port = "8000";
 static struct mg_serve_http_opts s_http_server_opts;
@@ -112,18 +115,50 @@ static void handle_sum_call(struct mg_connection *nc, struct http_message *hm) {
 	mg_send_http_chunk(nc, "", 0); /* Send empty chunk, the end of response */
 }
 
+
+void HttpService::handle_innerdevice_register(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
+
+void HttpService::handle_innerdevice_discover(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
+void HttpService::handle_innerdevice_list(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
+void HttpService::handle_status_query(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
+// 删除注册的室内机
+void HttpService::handle_innerdevice_remove(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
 void HttpService::ev_handler(struct mg_connection *nc, int ev, void *ev_data) {
 	struct http_message *hm = (struct http_message *) ev_data;
-	
+	HttpService* http = HttpService::instance().get();
 	switch (ev) {
 		case MG_EV_HTTP_REQUEST:
-			if (mg_vcmp(&hm->uri, "/api/v1/sum") == 0) {
-				handle_sum_call(nc, hm); /* Handle RESTful call */
-			} else if (mg_vcmp(&hm->uri, "/printcontent") == 0) {
-				char buf[100] = {0};
-				memcpy(buf, hm->body.p,
-				       sizeof(buf) - 1 < hm->body.len ? sizeof(buf) - 1 : hm->body.len);
-				printf("%s\n", buf);
+			if (mg_vcmp(&hm->uri, "/smartbox/discover") == 0) {
+				http->handle_innerdevice_discover(nc, hm); /* Handle RESTful call */
+			}else if (mg_vcmp(&hm->uri, "/api/smartbox/status") == 0) {
+				http->handle_status_query(nc, hm);
+			}else if (mg_vcmp(&hm->uri, "/api/smartbox/inner-device/list") == 0) {
+				http->handle_innerdevice_list(nc, hm);
+
+			}else if (mg_vcmp(&hm->uri, "/api/smartbox/inner-device") == 0) {
+				std::string method = hm->method.p;
+				boost::to_lower(method);
+				if(method == std::string("post")){
+					http->handle_innerdevice_register(nc,hm);
+				}else if( method == "delete"){
+					http->handle_innerdevice_remove(nc,hm);
+				}
+
 			} else {
 				mg_serve_http(nc, hm, s_http_server_opts); /* Serve static content */
 			}
@@ -156,9 +191,13 @@ bool HttpService::open(){
 	const char *err_str;
 	mg_mgr_init(&mgr, NULL);
 	s_http_server_opts.document_root = "/var/smartbox/http";
-	std::function< void (struct mg_connection *, int , void *) >  fx =std::bind( &HttpService::ev_handler,this);
+//	std::function< void (struct mg_connection *, int , void *) >  fx =std::bind( &HttpService::ev_handler,_1,_2,_3);
+//	auto  fx =std::bind( &HttpService::ev_handler,_1,_2,_3);
 	
-	nc = mg_bind_opt(&mgr, s_http_port,(mg_event_handler_t)fx, bind_opts);
+//
+//	nc = mg_bind_opt(&mgr, s_http_port,std::bind(&HttpService::ev_handler,this,_1,_2,_3), bind_opts);
+	nc = mg_bind_opt(&mgr, s_http_port,HttpService::ev_handler, bind_opts);
+//	nc = mg_bind_opt(&mgr, s_http_port,(mg_event_handler_t)fx, bind_opts);
 	if (nc == NULL) {
 		fprintf(stderr, "Error starting server on port %s: %s\n", s_http_port,
 		        *bind_opts.error_string);
@@ -171,6 +210,8 @@ bool HttpService::open(){
 	printf("Starting RESTful server on port %s, serving %s\n", s_http_port,
 	       s_http_server_opts.document_root);
 	thread_ = std::make_shared<std::thread>( std::bind(&HttpService::thread_run,this));
+	
+	return true;
 }
 
 void HttpService::close(){

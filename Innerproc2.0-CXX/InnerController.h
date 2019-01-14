@@ -10,6 +10,7 @@
 #include "connection.h"
 #include "sensor.h"
 #include "watchdog.h"
+#include "http-api.h"
 
 class InnerController: ISensorListener, std::enable_shared_from_this<InnerController> {
 	PropertyServerConnection proserver_conn_;
@@ -19,7 +20,7 @@ class InnerController: ISensorListener, std::enable_shared_from_this<InnerContro
 public:
 	typedef std::shared_ptr<InnerController> Ptr;
 	bool init(const Config& props);
-	void open();
+	bool open();
 	void close();
 	void run();
 	
@@ -32,6 +33,8 @@ public:
 	
 	void onAlarm(const std::shared_ptr<SensorAlarmInfo> alarm,ISensor* sensor);
 	
+	BoxDiscoverInfo getDiscoverInfo();
+	BoxStatusInfo getStatusInfo();
 };
 
 

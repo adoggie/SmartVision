@@ -14,7 +14,7 @@ struct DataConsumer{
 
 struct DataAccumulator{
 	void enqueue(const BytePtr data,size_t size);
-	MessageList_t getMessageList();
+//	MessageList_t getMessageList();
 };
 
 

@@ -22,7 +22,7 @@ public:
 
 	void sendData(BytePtr data ,size_t size);
 	void setAccumulator(const std::shared_ptr<DataAccumulator>& acc);
-	void setMessageHandler(const std::shared_ptr<MessageHandler> & handler);
+//	void setMessageHandler(const std::shared_ptr<MessageHandler> & handler);
 
 	std::shared_ptr<Connection>& getConnection() const;
 private:

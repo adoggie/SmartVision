@@ -11,11 +11,12 @@ bool InnerController::init(const Config& props){
 	return true;
 }
 
-void InnerController::open(){
-	proserver_conn_.setListener(std::shared_from_this());
-	outbox_conn_.setListener(std::shared_from_this());
+bool InnerController::open(){
+	proserver_conn_.setListener(shared_from_this());
+	outbox_conn_.setListener(shared_from_this());
 	watchdog_.open();
 	sensor_.open();
+	return true;
 }
 
 void InnerController::close(){
