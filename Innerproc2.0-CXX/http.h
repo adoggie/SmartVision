@@ -22,6 +22,7 @@ struct HttpResponse{
 
 };
 
+typedef std::map< std::string, std::string> HttpHeaders_t;
 
 class HttpService:Service{
 
@@ -47,10 +48,18 @@ public:
 	void handle_status_query(struct mg_connection *nc, struct http_message *hm );
 	void handle_innerdevice_list(struct mg_connection *nc, struct http_message *hm );
 	
-	void thread_run();
+	void handle_innerdevice_login(struct mg_connection *nc, struct http_message *hm );
+	void handle_seczone_passwd_set(struct mg_connection *nc, struct http_message *hm );
 	
-	std::shared_ptr<std::thread> thread_;
+	bool check_auth(struct http_message *hm ,const std::string& code="token" );
+	
+	void thread_run();
+
+private:
+	Config 	cfgs_;
+//	std::shared_ptr<std::thread> thread_;
 	std::atomic_bool running_;
+	
 };
 
 //class InnerServiceHandler:HttpHandler{

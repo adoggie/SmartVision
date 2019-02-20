@@ -30,37 +30,46 @@ struct CallInfo{
  */
 
 
-struct CallRequest:std::enable_shared_from_this<CallRequest>{
+struct CallRequest: std::enable_shared_from_this<CallRequest>{
 	CallEndpoint	src;
 	CallEndpoint	dest;
 	std::time_t 	stime;
 	Connection::Ptr conn;
 	
-	virtual void open();
-	virtual void close();
+	virtual void open(){};
+	virtual void close(){
+		if(conn){
+			conn->close();
+		}
+	};
 	
-	virtual void keep_alive(std::time_t interval); // 定时发送保活包
+	virtual void keep_alive(std::time_t interval){}; // 定时发送保活包
 	virtual ~CallRequest(){}
 	
 };
 
 struct CallRequestIn:CallRequest{
-	std::shared_ptr<MessageCallIn> msg_;
+	std::shared_ptr<MessageCallIn> msg;
 	
-	CallRequestIn(const std::shared_ptr<MessageCallIn> & msg):msg_(msg){}
+	CallRequestIn(const std::shared_ptr<MessageCallIn> & msg_):msg(msg_){}
 	
-	void keep_alive(std::time_t interval); // 检查定时存活包是否到达
+	virtual void keep_alive(std::time_t interval){}; // 检查定时存活包是否到达
 	
-	void open();
-	void close();
+	virtual void open(){};
+	virtual void close(){};
+	
+	virtual void onConnected(const Connection::Ptr& conn){};
 };
 
 struct CallRequestOut:CallRequest{
+	CallRequestOut(){}
+	~CallRequestOut(){}
+	void keep_alive(std::time_t interval){}; // 发送定时存活包
 	
-	void keep_alive(std::time_t interval); // 发送定时存活包
+	void open(){}
+	void close(){};
 	
-	void open();
-	void close();
+	void onConnected(const Connection::Ptr& conn);
 };
 
 struct CallEstablished{

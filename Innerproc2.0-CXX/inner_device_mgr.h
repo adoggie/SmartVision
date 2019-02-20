@@ -10,52 +10,67 @@
 #include "device.h"
 #include "service.h"
 #include "sensor.h"
+#include "server.h"
+#include "message.h"
 
 /**
  * @brief 室内设备连接管理器
  */
-class InnerDeviceManager: Service { // ,std::enable_shared_from_this<InnerConnectionManager>{
-	std::list< InnerDevice::Ptr >   devices_;
-	std::shared_ptr<SocketServer>   sockserver_;
-	
-	Connection::Ptr  calling_conn_; //  当前呼叫中的连接
+class InnerDeviceManager: Service,IConnectionListener { // ,std::enable_shared_from_this<InnerConnectionManager>{
+
 public:
 	static std::shared_ptr<InnerDeviceManager>& instance(){
 		static std::shared_ptr<InnerDeviceManager> handle ;
 		if(!handle.get()){
-			handle = new InnerDeviceManager;
+			handle = std::make_shared<InnerDeviceManager>() ;
 		}
+		return handle;
 	}
 	
 	bool  init(const Config& cfgs);
 	
-	void open();
+	bool open();
 	void close();
 	
 //	void onCallComeIn(const CallInfo& callinfo,std::shared_ptr<Connection>& conn);
 	
 //	void onMessage(const std::shared_ptr<Message>& message,const std::share_ptr<InnerDevice>& device);
-	void onJoinFamily(const std::shared_ptr<MessageJoinFamily> & msg,Connection::Ptr& conn);
-	void onCallOut(const std::shared_ptr<MessageCallOut>  & msg ,Connection::Ptr& conn);
-	void onCallEnd(const std::shared_ptr<MessageCallEnd>  & msg ,Connection::Ptr& conn);
-	void onCallKeep(const std::shared_ptr<MessageCallKeep>  & msg ,Connection::Ptr& conn);
-	void onCallReject(const std::shared_ptr<MessageCallReject>  & msg ,Connection::Ptr& conn);
-	void onCallAccept(const std::shared_ptr<MessageCallAccept>  & msg ,Connection::Ptr& conn);
+	void onJoinFamily(const std::shared_ptr<MessageJoinFamily> & msg,const Connection::Ptr& conn);
+	void onCallOut(const std::shared_ptr<MessageCallOut>  & msg ,const Connection::Ptr& conn);
+	void onCallEnd(const std::shared_ptr<MessageCallEnd>  & msg ,const Connection::Ptr& conn);
+	void onCallKeep(const std::shared_ptr<MessageCallKeep>  & msg ,const Connection::Ptr& conn);
+	void onCallReject(const std::shared_ptr<MessageCallReject>  & msg ,const Connection::Ptr& conn);
+	void onCallAccept(const std::shared_ptr<MessageCallAccept>  & msg ,const Connection::Ptr& conn);
 	
 	
-	void onConnected(const std::shared_ptr<Connection> & conn);
-	void onDisconnected(const std::shared_ptr<Connection> & conn);
+	void onConnected(const Connection::Ptr & conn);
+	void onDisconnected(const Connection::Ptr & conn);
+	void onJsonText(const std::string & text,const Connection::Ptr& conn);
 	
 	bool isBusy();
 	void postAlarm(const std::shared_ptr<SensorAlarmInfo> & alarm);     /*!< 广播报警到连接的室内设备 */
-	bool callIn(const std::shared_ptr<CallRequestIn>& req);     /*!< 呼叫进入 */
+	std::shared_ptr<Message> callIn(const std::shared_ptr<CallRequestIn>& req);     /*!< 呼叫进入 */
 	
 	void endCall();     // 远端结束呼叫   (app 发送挂断)
-	void keepCall();    // 远端保持呼叫线路 （由app定时发送)
+	std::shared_ptr<Message> keepCall();    // 远端保持呼叫线路 （由app定时发送)
 	void rejectCall();  // 远端拒接
-	void acceptCall();  // 远端接听
+	std::shared_ptr<Message> acceptCall();  // 远端接听
+	
+	bool sendMessageOnCalling(const std::shared_ptr<Message>& message);  // 在呼叫设备连接上发送消息
 protected:
-	void callOut(CallInfo& call,std::shared_ptr<InnerDevice>& device);	/*!<发起对外呼叫 */
+//	void callOut(CallInfo& call,std::shared_ptr<InnerDevice>& device);	/*!<发起对外呼叫 */
+protected:
+//	void onJoinFamily(std::shared_ptr<MessageJoinFamily>& msg,const Connection::Ptr & conn);
+	
+	std::list< InnerDevice::Ptr >   devices_;
+	std::shared_ptr<SocketServer>   sockserver_;
+	
+	Connection::Ptr  calling_conn_; //  当前呼叫中的连接
+	InnerDeviceWithIds device_ids_; //
+	std::map<std::string,Connection::Ptr> conn_ids_;
+	std::shared_ptr<SocketServer>    server_;
+	boost::asio::io_service io_service_;
+	std::shared_ptr<CallRequestIn>  call_req_in_; //呼叫进入，accept/reject/timeout将清除此对象
 };
 
 

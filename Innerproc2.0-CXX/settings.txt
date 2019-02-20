@@ -1,0 +1,37 @@
+
+id=AE123123
+type=1
+token=a12312
+
+access_api_url = http://%s/smartbox/api
+access_main_url =
+
+sign_key=123456
+
+callmgr.server_ip=127.0.0.1
+callmgr.server_port=17901
+
+# 室内服务端口
+innerhost.server_ip=127.0.0.1
+innerhost.server_port=17902
+
+login_url=http://127.0.0.1:8088/propserver/login
+
+http_proxy_ip= 127.0.0.1
+http_proxy_port=18993
+
+stream_server_url=http://127.0.0.1:5454/
+
+admin_password=123456
+
+family_if=eth0
+net_if=eth1
+
+http.port=8000
+http.document_root=/tmp/smartbox/http
+
+
+innermgr.server_port = 17902
+innermgr.server_ip =  127.0.0.1
+
+#

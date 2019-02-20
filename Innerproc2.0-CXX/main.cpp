@@ -101,7 +101,9 @@ void test_getline(){
 	
 	boost::asio::ip::tcp::endpoint ep(boost::asio::ip::address::from_string(""),123);
 }
-int main() {
+
+
+int _main() {
 	std::cout << "Hello, World!" << std::endl;
 	std::string name = "name is shanghai.";
 //	auto itr = std::remove_if(name.begin(),name.end(),std::isspace);
@@ -123,7 +125,7 @@ int main() {
 	});
 
 	TwoInt ti = std::make_tuple(1,2);
-	ti = {2,3};
+//	ti = {2,3};
 	std::cout<< std::get<0>(ti) <<std::endl;
 
 	std::cout<< std::hex << 42 << '\n';

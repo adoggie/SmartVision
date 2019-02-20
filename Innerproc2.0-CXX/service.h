@@ -15,13 +15,13 @@
 
 class Service{
 protected:
-	std::mutex 						mutex_;
+	std::recursive_mutex 						mutex_;
 	Config 					        cfgs_;
-	boost::asio::io_service 		service_;
+	boost::asio::io_service 		io_service_;
 	boost::asio::deadline_timer 	timer_;
-
+	std::shared_ptr<std::thread> 					thread_;
 public:
-	Service():timer_(service_){}
+	Service():timer_(io_service_){}
 	virtual  ~Service(){};
 public:
 	virtual void lock(){};
@@ -30,8 +30,18 @@ public:
 public:
 	virtual bool init(const Config& props) = 0;
 	virtual bool open(){return false;};
-	virtual void close(){};
-	virtual void run(){}
+	virtual void close(){
+		io_service_.stop();
+		thread_->join();
+	};
+	virtual void run(){
+		thread_ = std::make_shared<std::thread>( std::bind(&Service::thread_run,this) );
+	}
+
+protected:
+	virtual void thread_run(){
+		io_service_.run();
+	}
 };
 
 
@@ -40,8 +50,8 @@ class  ListenService:Service{
 };
 
 
-struct ServiceRegister{
-	virtual void addService(std::shared_ptr<ListenService>& service ) = 0;
+struct ServiceContainer{
+	virtual void addService(std::shared_ptr<Service>& service ) = 0;
 };
 
 

@@ -1,96 +1,13 @@
 
 #include "http.h"
 
-
-/**
-1. 服务发现
-  url: /smartbox/discover
-  return:
-    - time : 20191123 12:00:12
-    - ver : 1.0
-    - service_api: http://192.168.1.34:8088/api/smartbox/
-    - server_api: http://192.168.1.34:5568/api/smartbox/
-    - push_address: tcp://192.168.1.34:6453
- 
- 2. 运行状态查询
-   url : api/smartbox/status
-   method: get
-   return:
-     - time
-     - ver
-     - fds  打开文件数
-     - threads 运行的线程数
-     - mem_rss 占用内存
-     - mem_free 系统空余内存
-     - disk_free 磁盘空闲
-     - outbox_net  与室外机连接状态 0:未连接, 1:已连接
-     - propserver_net  与物业服务器链接状态
-     - ips			当前主机ip ,  ip1,ip2 表示小区网ip和家庭网口ip
-
- 3. 注册室内设备
- 	url: api/smartbox/inner-device/
- 	method: post
- 	params:
- 	  - device_id
- 	  - device_type  ios,android,screen
- 	  - auth_code	室内机的授权码，在室内屏可查询获得室内机的授权码，室内屏安装时直接读取box内的设置参数
- 	  
- 	return:
- 	  - token  访问设备的授权码
-
- 3.1 查询注册室内设备列表
-   url: api/smartbox/inner-device/list
-   method: get
-   params:
-     - token  访问授权码
-   return:
-     - device_id
-     - device_type
-     - register_time
-     - active   1: online , 0: offline
-
- 3.2 删除设备
-   url: api/smartbox/inner-device
-   metod: delete
-   params:
-     - token  访问授权码
-     - device_id
-   return:
-   
- 
- 4. 设备重启
-   url: api/smartbox/reboot
-   metod: post
-   params:
-     - token  访问授权码
-
- 
- 物业服务端接口
- --------
- 
- 1. 设备smartbox 登录服务器
-   url: api/smartbox/login
-   method: post
-   params:
-     - device_id
-     - ip
-     - signature
-
- 2. 获取室内机列表
-   url： api/smartbox/list
-   method: get
-   params:
-      - token
-      - ver
-      - ip  家庭wifi地址或smartbox的小区网地址
- 3. 获取室外机列表
- 
- 
- */
- 
 #include "mongoose.h"
 #include <thread>
 #include <boost/algorithm/string.hpp>
+
+#include "InnerController.h"
+#include "app.h"
+#include "error.h"
 
 static const char *s_http_port = "8000";
 static struct mg_serve_http_opts s_http_server_opts;
@@ -116,6 +33,51 @@ static void handle_sum_call(struct mg_connection *nc, struct http_message *hm) {
 }
 
 
+HttpHeaders_t defaultResponseHeaders(){
+	return {
+			{"Content-Type","application/json"},
+			{"Transfer-Encoding","chunked"}
+	};
+}
+
+Json::Value defaultResponseJsonData(int status=HTTP_JSON_RESULT_STATUS_OK,int errcode = Error_NoError,const char* errmsg=""){
+	Json::Value data;
+	data["status"] = status;
+	data["errcode"] = errcode;
+	data["errmsg"] = errmsg;
+	if(errmsg == std::string("")){
+		data["errmsg"] =  ErrorDefs.at(errcode);
+	}
+	return data;
+}
+
+
+Json::Value errorResponseJsonData(int errcode = Error_NoError,const char* errmsg=""){
+	Json::Value data;
+	data["status"] = HTTP_JSON_RESULT_STATUS_ERROR;
+	data["errcode"] = errcode;
+	data["errmsg"] = errmsg;
+	if(errmsg == std::string("")){
+		data["errmsg"] =  ErrorDefs.at(errcode);
+	}
+	return data;
+}
+
+
+void send_http_response(struct mg_connection *nc,const std::string& text,const HttpHeaders_t& headers){
+//	mg_printf(nc, "%s", "HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n");
+	mg_printf(nc, "%s", "HTTP/1.1 200 OK\r\n");
+	
+	
+	for(auto p:headers) {
+		mg_printf(nc, "%s: %s\r\n", p.first.c_str(),p.second.c_str());
+	}
+	mg_printf(nc, "%s", "\r\n");
+	
+	mg_send_http_chunk(nc, text.c_str(), text.size());
+	mg_send_http_chunk(nc, "", 0);
+}
+
 void HttpService::handle_innerdevice_register(struct mg_connection *nc, struct http_message *hm ){
 
 }
@@ -130,12 +92,72 @@ void HttpService::handle_innerdevice_list(struct mg_connection *nc, struct http_
 }
 
 void HttpService::handle_status_query(struct mg_connection *nc, struct http_message *hm ){
-
+	Json::Value data = defaultResponseJsonData();
+	data["result"] = InnerController::instance()->getStatusInfo();
+	std::string text = data.toStyledString();
+	send_http_response(nc,text,defaultResponseHeaders());
 }
 
 // 删除注册的室内机
 void HttpService::handle_innerdevice_remove(struct mg_connection *nc, struct http_message *hm ){
+	std::string token ;
+	struct mg_str* str = mg_get_http_header(hm,"token");
+}
 
+/**
+ * check_auth
+ * @param hm
+ * @param code
+ * @return
+ * @remark token的尾部32字节是签名校验码(md5),
+ * 	if md5(secret_key,token[0:-32]) == token[-32:]
+ * 		ok(..)
+ * 	else
+ * 	    error(..)
+ *
+ *  token 可携带设备的相关信息，采用base64编码
+ */
+bool HttpService::check_auth(struct http_message *hm,const std::string& code ){
+	std::string token ;
+	struct mg_str* str = mg_get_http_header(hm,"token");
+	return  true;
+	if(!str){
+		Application::instance()->getLogger().error("check_auth() ,detail: token is missing.");
+		return false;
+	}
+	token.assign(str->p,str->len);
+	if( cfgs_.get_string(code) == token){
+		return true;
+	}
+	
+	return false;
+}
+
+/*
+设备登录
+参数：
+  token - 用户授权码
+返回： smartbox 运行接口参数
+  - proxy_url 物业服务器api访问地址
+  - access_url smartbox api访问地址
+  - call_address  呼叫连接地址
+*/
+void handle_innerdevice_login(struct mg_connection *nc, struct http_message *hm ){
+
+}
+
+//修改防区密码
+void HttpService::handle_seczone_passwd_set(struct mg_connection *nc, struct http_message *hm ){
+	Json::Value data = defaultResponseJsonData();
+	
+	if( !check_auth(hm,"inner_token")){
+		data = errorResponseJsonData(Error_TokenInvalid);
+	}else{
+//		data["result"] = InnerController::instance()->getStatusInfo();
+	}
+	
+	std::string text = data.toStyledString();
+	send_http_response(nc,text,defaultResponseHeaders());
 }
 
 void HttpService::ev_handler(struct mg_connection *nc, int ev, void *ev_data) {
@@ -145,20 +167,23 @@ void HttpService::ev_handler(struct mg_connection *nc, int ev, void *ev_data) {
 		case MG_EV_HTTP_REQUEST:
 			if (mg_vcmp(&hm->uri, "/smartbox/discover") == 0) {
 				http->handle_innerdevice_discover(nc, hm); /* Handle RESTful call */
-			}else if (mg_vcmp(&hm->uri, "/api/smartbox/status") == 0) {
+			}else if (mg_vcmp(&hm->uri, "/smartbox/api/status") == 0) {
 				http->handle_status_query(nc, hm);
-			}else if (mg_vcmp(&hm->uri, "/api/smartbox/inner-device/list") == 0) {
+			}else if (mg_vcmp(&hm->uri, "/smartbox/api/inner-device/list") == 0) {
 				http->handle_innerdevice_list(nc, hm);
 
-			}else if (mg_vcmp(&hm->uri, "/api/smartbox/inner-device") == 0) {
+			}else if (mg_vcmp(&hm->uri, "/smartbox/api/inner-device") == 0) {
 				std::string method = hm->method.p;
 				boost::to_lower(method);
-				if(method == std::string("post")){
+				if(method == std::string("post")){ // 注册
 					http->handle_innerdevice_register(nc,hm);
-				}else if( method == "delete"){
+				}else if( method == "delete"){ // 注销
 					http->handle_innerdevice_remove(nc,hm);
 				}
-
+			}else if (mg_vcmp(&hm->uri, "/smartbox/api/seczone/passwd") == 0) { //防区密码设置
+				http->handle_seczone_passwd_set(nc,hm);
+			}else if (mg_vcmp(&hm->uri, "/smartbox/api/login") == 0) { // 设备登录
+			
 			} else {
 				mg_serve_http(nc, hm, s_http_server_opts); /* Serve static content */
 			}
@@ -180,7 +205,7 @@ void HttpService::thread_run() {
 }
 
 bool  HttpService::init(const Config& cfgs){
-	
+	cfgs_ = cfgs;
 	return true;
 }
 
@@ -190,16 +215,18 @@ bool HttpService::open(){
 	char *cp;
 	const char *err_str;
 	mg_mgr_init(&mgr, NULL);
-	s_http_server_opts.document_root = "/var/smartbox/http";
+	s_http_server_opts.document_root = "/tmp/smartbox/http";
+	std::string http_port  = cfgs_.get_string("http.port","8000");
+	
 //	std::function< void (struct mg_connection *, int , void *) >  fx =std::bind( &HttpService::ev_handler,_1,_2,_3);
 //	auto  fx =std::bind( &HttpService::ev_handler,_1,_2,_3);
 	
 //
 //	nc = mg_bind_opt(&mgr, s_http_port,std::bind(&HttpService::ev_handler,this,_1,_2,_3), bind_opts);
-	nc = mg_bind_opt(&mgr, s_http_port,HttpService::ev_handler, bind_opts);
+	nc = mg_bind_opt(&mgr, http_port.c_str(),HttpService::ev_handler, bind_opts);
 //	nc = mg_bind_opt(&mgr, s_http_port,(mg_event_handler_t)fx, bind_opts);
 	if (nc == NULL) {
-		fprintf(stderr, "Error starting server on port %s: %s\n", s_http_port,
+		fprintf(stderr, "Error starting server on port %s: %s\n", http_port.c_str(),
 		        *bind_opts.error_string);
 		return false;
 	}
@@ -215,9 +242,10 @@ bool HttpService::open(){
 }
 
 void HttpService::close(){
-
+	running_ = false;
+	thread_->join();
 }
 
 void HttpService::run() {
-	thread_->join();
+//	thread_->join();
 }

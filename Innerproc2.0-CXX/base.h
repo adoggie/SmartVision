@@ -10,17 +10,23 @@
 #include <list>
 #include <map>
 #include <memory>
+#include <mutex>
+#include <condition_variable>
+
 #include <boost/any.hpp>
+#include <boost/format.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 
 typedef  std::map< std::string , boost::any > PropertyMap;
+typedef  std::map< std::string , std::string > PropertyStringMap;
 
 typedef unsigned char * BytePtr;
 typedef std::vector<unsigned char> ByteStream;
 
-class  tgObject{
+class  Object{
 public:
-	typedef std::shared_ptr<tgObject> Ptr;
+	typedef std::shared_ptr<Object> Ptr;
 	Ptr data(){
 		return data_;
 	}
@@ -28,9 +34,14 @@ public:
 	void data(const Ptr& ptr){
 		data_ = ptr;
 	}
-	tgObject(){}
+	Object(){}
 private:
+
+protected:
 	Ptr data_;
+	std::condition_variable cv_;
+	std::recursive_mutex rmutex_;
+	std::mutex			mutex_;
 };
 
 //
@@ -49,6 +60,7 @@ private:
 //
 //
 
+#define SCOPED_LOCK  std::lock_guard<std::mutex> lock(mutex_);
 
 enum CallPeerType{
 	INNER_BOX = 1,

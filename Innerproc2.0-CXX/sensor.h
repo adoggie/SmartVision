@@ -22,7 +22,7 @@ struct ISensorListener{
 class InnerSensor:ISensor{
 public:
 	bool init(const Config& props);
-	void open();
+	bool open();
 	void close();
 };
 

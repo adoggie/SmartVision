@@ -11,12 +11,13 @@
 #include "sensor.h"
 #include "watchdog.h"
 #include "http-api.h"
+#include "seczone.h"
 
-class InnerController: ISensorListener, std::enable_shared_from_this<InnerController> {
-	PropertyServerConnection proserver_conn_;
-	OuterBoxConnection outbox_conn_;
-	InnerSensor sensor_;
+class InnerController:  public std::enable_shared_from_this<InnerController> {
+//	InnerSensor sensor_;
 	WatchDog    watchdog_;
+	SecZoneGuard seczone_guard_;
+	Config 		cfgs_;
 public:
 	typedef std::shared_ptr<InnerController> Ptr;
 	bool init(const Config& props);
@@ -27,14 +28,17 @@ public:
 	static std::shared_ptr<InnerController>& instance(){
 		static std::shared_ptr<InnerController> handle ;
 		if(!handle.get()){
-			handle = new InnerController;
+			handle = std::make_shared<InnerController>() ;
 		}
+		return handle;
 	}
 	
 	void onAlarm(const std::shared_ptr<SensorAlarmInfo> alarm,ISensor* sensor);
 	
-	BoxDiscoverInfo getDiscoverInfo();
-	BoxStatusInfo getStatusInfo();
+//	BoxDiscoverInfo getDiscoverInfo();
+//	BoxStatusInfo getStatusInfo();
+	
+	Json::Value getStatusInfo();
 };
 
 

@@ -68,9 +68,12 @@ void Connection::handle_read(const boost::system::error_code& error, size_t byte
 		
 		// parse json message
 		for(auto s : json_lines) {
-			server_->getListener()->onJsonText(s,shared_from_this());
+			if(listener_){
+				listener_->onJsonText(s,shared_from_this());
+			}
+//			server_->getListener()->onJsonText(s,shared_from_this());
 		}
-
+		start_read();
 	}else {
 		std::cerr << error.message() << std::endl;
 		close();
@@ -87,11 +90,19 @@ void Connection::open(){
 
 }
 
+void Connection::start() {
+	// Start the input actor.
+	start_read();
+	// Start the heartbeat actor.
+	start_heartbeat();
+}
+
 
 void Connection::send(const char * data,size_t size){
-	boost::asio::async_write(sock_, boost::asio::buffer(data,size), boost::bind(&Connection::handle_write, shared_from_this(),
-	                                                                            boost::asio::placeholders::error,
-	                                                                          boost::asio::placeholders::bytes_transferred));
+//	SCOPED_LOCK
+	boost::asio::async_write(sock_, boost::asio::buffer(data,size),
+	                         boost::bind(&Connection::handle_write, shared_from_this(),
+boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 }
 
 void Connection::send(const std::string& data){
@@ -114,14 +125,21 @@ void Connection::connect(){
 
 
 void Connection::close(){
-	stopped_ = true;
+//	std::lock_guard<std::mutex> lock(mutex_);
+//	SCOPED_LOCK
+	if(stopped_) {
+		return;
+	}
 	boost::system::error_code ignored_error;
 	sock_.close(ignored_error);
 	deadline_timer_.cancel();
 	heartbeat_timer_.cancel();
+	
+	if(listener_ ){
+		listener_->onDisconnected(shared_from_this());
+	}
+	stopped_ = true;
 }
-
-
 
 void Connection::start_read() {
 	// Set a deadline for the read operation.
@@ -164,8 +182,6 @@ void Connection::check_connect(){
 	deadline_timer_.async_wait(std::bind(&Connection::check_connect, this));
 }
 
-
-
 void Connection::handle_write(const boost::system::error_code& error, size_t bytes_transferred) {
 	if (stopped_) {
 		return;
@@ -174,14 +190,11 @@ void Connection::handle_write(const boost::system::error_code& error, size_t byt
 	if (!error) {
 //			heartbeat_timer_.expires_after(std::chrono::seconds(read_timeout_));
 //			heartbeat_timer_.async_wait(std::bind(&Connection::start_write, this));
-	}
-	else
-	{
-		std::cout << "Error on heartbeat: " << error.message() << "\n";
-		close();
+	} else {
+		std::cout << "Error on writing: " << error.message() << "\n";
+//		close();
 	}
 }
-
 
 void Connection::handle_connect(const boost::system::error_code& error) {
 	if (stopped_)
@@ -195,11 +208,7 @@ void Connection::handle_connect(const boost::system::error_code& error) {
 		if(listener_){
 			listener_->onConnectError(shared_from_this(),ConnectionError::Timeout);
 		}
-	}
-		
-		// Check if the connect operation failed before the deadline expired.
-	else if (error)
-	{
+	} else if (error) { // Check if the connect operation failed before the deadline expired.
 		std::cout << "Connect error: " << error.message() << "\n";
 		
 		// We need to close the socket used in the previous connection attempt
@@ -208,18 +217,12 @@ void Connection::handle_connect(const boost::system::error_code& error) {
 		if(listener_){
 			listener_->onConnectError(shared_from_this(),ConnectionError::Unreachable);
 		}
-		
-	}
-		// Otherwise we have successfully established a connection.
-	else {
+	} else { // Otherwise we have successfully established a connection.
 //		std::cout << "Connected to " << endpoint_iter->endpoint() << "\n";
 		if(listener_){
 			listener_->onConnected(shared_from_this());
 		}
-		// Start the input actor.
-		start_read();
-		// Start the heartbeat actor.
-		start_heartbeat();
+		start();
 	}
 }
 

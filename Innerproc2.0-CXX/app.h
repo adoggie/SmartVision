@@ -8,40 +8,30 @@
 #include "base.h"
 #include "service.h"
 #include "config.h"
-#include "InnerController.h"
+//#include "InnerController.h"
+#include "logger.h"
 
-class Logger{
-	void debug();
-
-};
-
-class Application:ServiceObject,ServiceRegister{
+class Application:public Object,public ServiceContainer{
 	Logger 	logger_;
 	Config  cfgs_;
 	
-	InnerController controller_;
+//	InnerController controller_;
+	std::vector<std::shared_ptr<Service> > services_;
 public:
 	static std::shared_ptr<Application>& instance();
 
 	Application&  init();
 
-	Logger& getLogger(){
-		return logger_;
-	}
+	Logger& getLogger();
 
 	void run();
 	void stop();
 
-	void addService(std::shared_ptr<ListenService>& service );
+	void addService(std::shared_ptr<Service>& service );
 
-	Config& getConfig(){
-		return cfgs_;
-	}
+	Config& getConfig();
 	
-	InnerController& getController(){
-		return controller_;
-	}
-
+	std::string name();
 protected:
 	void wait_for_shutdown();
 

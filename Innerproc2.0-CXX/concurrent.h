@@ -12,7 +12,7 @@
 using namespace std;
 using namespace boost;
 
-template  <typename Data>
+
 class ConcurrentQueue
 {
 private:

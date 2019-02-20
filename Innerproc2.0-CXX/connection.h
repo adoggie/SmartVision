@@ -42,7 +42,7 @@ struct IConnectionListener;
 //class  Connection: tgObject, std::enable_shared_from_this<Connection>{
 class  Connection: public std::enable_shared_from_this<Connection>{
 //class  Connection{
-	
+	std::mutex mutex_;
 	boost::asio::ip::tcp::socket sock_;	/*!< socket 句柄 */
 //	std::string ip_;
 //	unsigned  short port_;
@@ -50,7 +50,8 @@ class  Connection: public std::enable_shared_from_this<Connection>{
 	SocketServer* server_;
 	Direction  direction_;
 	boost::asio::streambuf streambuf_;
-	std::shared_ptr<IConnectionListener> listener_;
+//	std::shared_ptr<IConnectionListener> listener_;
+	IConnectionListener* listener_;
 	std::string id_;
 	boost::asio::steady_timer deadline_timer_;
 	boost::asio::steady_timer heartbeat_timer_;
@@ -71,7 +72,7 @@ public:
 //	Connection(const boost::asio::ip::tcp::endpoint& ep,const boost::asio::io_service& io_service);
 	Connection(SocketServer* server);
 	virtual  ~Connection(){}
-	void setListener(const std::shared_ptr<IConnectionListener> listener){
+	void setListener(IConnectionListener* listener){
 		listener_ = listener;
 	}
 	
@@ -108,6 +109,7 @@ public:
 	void start_read() ;
 	
 	void start_heartbeat() ;
+	void start();
 protected:
 	
 	void check_connect();
@@ -123,9 +125,9 @@ protected:
 
 struct IConnectionListener{
 //	virtual void onConnectionReached(Connection::Ptr& conn) = 0;
-	virtual void onConnected(const Connection::Ptr& conn)=0;
-	virtual void onDisconnected(Connection::Ptr& conn){};
-	virtual void onData(boost::asio::streambuf& buffer){};
+	virtual void onConnected(const Connection::Ptr& conn){};
+	virtual void onDisconnected(const Connection::Ptr& conn){};
+	virtual void onData(boost::asio::streambuf& buffer,const Connection::Ptr& conn){};
 	virtual void onJsonText(const std::string & text,const Connection::Ptr& conn){};
 	virtual void onConnectError(const Connection::Ptr& conn,ConnectionError error){}  // 0: not reachable , 1: timeout
 	
