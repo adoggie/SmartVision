@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="innerproc"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="innerbox2">
+				<Option output="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/innerbox2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DMACOS"/>
+					<Add option="-D_MACOS"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/boost/1.60.0_2/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 innerbox2"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="innerbox2/fast">
+				<Option output="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/innerbox2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add option="-DMACOS"/>
+					<Add option="-D_MACOS"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/local/Cellar/boost/1.60.0_2/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 innerbox2/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/InnerController.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/InnerController.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/app.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/app.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/base64.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/call.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/call.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/call_manager.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/call_manager.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/config.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/config.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/connection.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/connection.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/crc16.c">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/crc16.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/device.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/device.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/error.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/error.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/event.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/event.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/http-api.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/http-api.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/http.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/http.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/inner_device_mgr.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/inner_device_mgr.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/md5.c">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/md5.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/md5.hpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/message.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/message.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/mongoose.c">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/mongoose.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/seczone.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/seczone.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/sensor.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/sensor.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/sensor_message.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/sensor_message.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/server.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/server.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/utils.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/utils.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/version.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/watchdog.cpp">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/watchdog.h">
+			<Option target="innerbox2"/>
+		</Unit>
+		<Unit filename="/Users/scott/Desktop/Projects/SmartVision/Branches/innerproc_2.0/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,35 @@
+all: innerbox
+.PHONY: clean
+TARGET = innerbox
+HEADERS = InnerController.h call.h config.h error.h http-api.h md5.h sensor.h utils.h app.h call_manager.h connection.h event.h http.h message.h sensor_message.h version.h base.h codec.h crc16.h handler.h inner_device_mgr.h mongoose.h server.h watchdog.h base64.h concurrent.h device.h hex.h logger.h seczone.h service.h
+OBJECTS = InnerController.o call_manager.o crc16.o event.o inner_device_mgr.o mongoose.o sensor_message.o watchdog.o app.o config.o device.o http-api.o md5.o seczone.o server.o call.o connection.o error.o http.o message.o sensor.o utils.o
+
+
+ACC= ${CXX}
+LDFLAGS= -static
+ALDFLAGS = ${LDFLAGS}
+
+LIBS= -lboost_system  -ljsoncpp -lpthread -lserialport
+CFLAGS= -Wall
+DEFINE=   -O2 -D_LINUX
+LINK= -L. -L/usr/local/lib -L/home/linaro4.9.4/arm-linux-gnueabi/libc/lib
+INCLUDE= -I . -I/usr/local/include
+
+%.o: %.c $(HEADERS)
+	$(ACC) $(DEFINE) $(INCLUDE) $(ALDFLAGS) -c $< -o $@ 
+
+%.o: %.cpp $(HEADERS)
+	$(ACC) $(DEFINE) $(INCLUDE) $(ALDFLAGS) -std=c++11 -c $< -o $@
+
+#$(objects): %.o
+
+$(TARGET): $(OBJECTS)
+
+	$(ACC) $(DEBUG) $(DEFINE) $(OBJECTS)  -o $@ $(LINK) $(INCLUDE) $(LIBS) $(CFLAGS) $(ALDFLAGS)
+	arm-linux-gnueabi-strip $(TARGET)
+	
+
+clean:
+	-rm -f $(OBJECTS)
+	-rm -f $(TARGET)
+	rm -f *.o

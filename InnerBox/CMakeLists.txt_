@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.3)
+project(innerproc)
+
+set(CMAKE_CXX_STANDARD 11)
+
+add_definitions(-DMACOS -D_MACOS )
+#add_executable(innerproc main.cpp app.cpp logger.cpp logger.h codec.cpp config.cpp concurrent.h)
+
+#add_link_options(-pthread) # support linux
+#include_directories
+include_directories(/usr/local/include /usr/local/Cellar/boost/1.60.0_2/include)
+#link_directories
+link_directories( /usr/local/lib )
+#link_directories(/usr/local/lib)
+link_libraries( boost_system  jsoncpp pthread serialport)
+#target_link_libraries(innerproc /usr/local/Cellar/boost/1.66.0/lib)
+#target_link_libraries(innerproc /usr/local/Cellar/boost/1.66.0/lib)
+#add_library()
+
+#add_executable(innerproc main.cpp mongoose.c connection.cpp call.cpp service.cpp inner_device_mgr.cpp inner_device_mgr.h call_manager.cpp call_manager.h)
+#add_executable(innerproc main.cpp sensor.cpp watchdog.cpp )
+#add_executable(innerproc main.cpp http.cpp sensor.cpp watchdog.cpp  )
+
+set(SRC_1 utils.h http-api.cpp version.h sensor_message.cpp sensor_message.h
+        crc16.c
+        event.cpp event.h )
+add_executable(innerbox2 main.cpp http.cpp mongoose.c connection.cpp inner_device_mgr.cpp message.cpp
+        call_manager.cpp device.cpp app.cpp InnerController.cpp
+        config.cpp watchdog.cpp sensor.cpp call.cpp
+        seczone.cpp
+        error.cpp
+        error.h server.h server.cpp
+        md5.c md5.hpp base64.h utils.cpp
+        ${SRC_1}
+        )
+
+

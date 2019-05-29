@@ -1,0 +1,55 @@
+
+# 设备编号
+id=AE123123
+type=1
+token=a12312
+
+#物业服务器管理接口地址
+propserver_url = http://11.0.0.1:8088
+
+controller.check_timer = 5
+
+#室内app注册时使用的签名秘钥
+secret_key=123456
+
+nic_1 = eth0
+nic_2 = eth1
+
+#呼叫进入地址
+call_listen_ip=127.0.0.1
+call_listen_port=7892
+
+#室内机连接地址
+family_port = 7891
+family_ip =  127.0.0.1
+
+#主机提供的http管理端口
+http.port=7890
+http.document_root=/tmp/smartbox/http
+
+#本地srs推流服务器地址
+stream_url=http://%s:954/streaming/%s
+
+#中心推流服务器地址
+center_stream_url=http://%s:954/streaming/%s
+
+#超级访问身份令牌
+advance_access_token = YTU3NzVlYjktYjQwMi00MGY2LTkxZjktYWMxYjIxZjM4NjNlCg==
+
+#防区设备单片机设备信息
+seczone_serial_port = /dev/ttyS1
+seczone_serial_baudrate = 115200
+
+#调试输出
+debug.log.udp.enable = true
+debug.log.udp.host= 11.0.0.1
+debug.log.udp.port= 9906
+
+#中心和主单元机网络检查超时
+net_check_interval = 10
+
+#是否定时检查呼叫的存活包(开发模式可关闭)
+keepalive_check.enable = false
+watchdog.enable = 0
+# 发送开启室内门的命令
+cmd_opendoor = 3,0,1,0,1,0

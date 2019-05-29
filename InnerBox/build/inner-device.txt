@@ -1,0 +1,4 @@
+
+# 内部注册设备信息
+# device_id,device_type,auth_code,reg_time
+# AAAA00999123,iphone/android,ABEEEEAAAAAAAAA,20120201_010100

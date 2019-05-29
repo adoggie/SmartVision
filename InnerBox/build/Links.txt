@@ -1,0 +1,15 @@
+
+https://github.com/ArashPartow/proxy
+http://www.partow.net/programming/tcpproxy/index.html
+https://tinyproxy.github.io/
+
+https://github.com/gauteh/config-cpp
+
+https://www.walletfox.com/course/parseconfigfile.php
+
+https://www.cnblogs.com/cnxkey/articles/8777975.html
+
+https://www.cri.ensmp.fr/~coelho/tunnel.c
+
+jsoncpp
+http://open-source-parsers.github.io/jsoncpp-docs/doxygen/index.html

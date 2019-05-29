@@ -1,0 +1,52 @@
+
+
+
+* 已完成
+? 未完成
+=============
+
+2019.3.16
+=============
+
+* 1. * logger add UDP handler
+* 2. http-client , 请求上传到物业服务器
+* 3. * 编写串口模块上下行消息编码代码  , sensor (hex,base64,md5)
+* 4. * sensor 定时发送heartbeat
+* 5. 加入  crc16 校验代码
+    https://github.com/gityf/crc
+
+? 6. 增加 box 到单元机和物业服务器的长连接状态接口
+？7. 读取设备硬件编码 ， 设备reboot代码
+
+
+编译 :
+boost1.66+
+
+
+udp logger Test
+=============
+server:  nc -luk 9906
+client:  nc -u localhost 9906
+
+iptables
+============
+stream redirection
+-A PREROUTING -i eth0 -p tcp -m tcp --dport 7894 -j DNAT --to-destination 192.168.2.198:1935
+propserver web redirection
+-A PREROUTING -i eth0 -p tcp -m tcp --dport 7895 -j DNAT --to-destination 192.168.2.198:8088
+
+
+若干问题
+2019.4.10
+=============
+1. filezilla 上传文件 2-10M 会发现文件大小不一致，故采用 arm设备wget拉取开发主机的程序的方法
+    macos:
+    brew install nginx
+    修改 /usr/local/etc/nginx/nginx.conf ，增加项目开发路径便于下载
+
+2. download [innerbox2]
+    见 dist/README.txt
+
+3. 网络监视
+    brew install nmap
+    nmap -sS 192.168.0.0/24 扫描设备开放端口

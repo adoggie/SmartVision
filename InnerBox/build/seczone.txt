@@ -1,0 +1,98 @@
+password = 1111
+
+mode.num = 4
+mode.index = 0
+mode0.value = 0
+mode1.value = 0
+mode2.value = 0
+mode3.value = 0
+
+zone.num = 8
+zone0.port = 0
+zone0.name = 烟感
+zone0.normalstate = 0
+zone0.currentstate =
+zone0.delaytime = 0
+zone0.nursetime = 0
+zone0.alltime = 0
+zone0.triggertype = 0
+zone0.online =
+zone0.delaytime = 0
+
+zone1.port = 1
+zone1.name = 防盗
+zone1.normalstate = 0
+zone1.currentstate =
+zone1.delaytime = 0
+zone1.nursetime = 0
+zone1.alltime = 0
+zone1.triggertype = 0
+zone1.online =
+zone1.delaytime = 0
+
+zone2.port = 2
+zone2.name =
+zone2.normalstate = 0
+zone2.currentstate =
+zone2.delaytime = 0
+zone2.nursetime = 0
+zone2.alltime = 0
+zone2.triggertype = 0
+zone2.online =
+zone2.delaytime = 0
+
+zone3.port = 3
+zone3.name =
+zone3.normalstate = 0
+zone3.currentstate =
+zone3.delaytime = 0
+zone3.nursetime = 0
+zone3.alltime = 0
+zone3.triggertype = 0
+zone3.online =
+zone3.delaytime = 0
+
+zone4.port = 4
+zone4.name =
+zone4.normalstate = 0
+zone4.currentstate =
+zone4.delaytime = 0
+zone4.nursetime = 0
+zone4.alltime = 0
+zone4.triggertype = 0
+zone4.online =
+zone4.delaytime = 0
+
+zone5.port = 5
+zone5.name =
+zone5.normalstate = 0
+zone5.currentstate =
+zone5.delaytime = 0
+zone5.nursetime = 0
+zone5.alltime = 0
+zone5.triggertype = 0
+zone5.online =
+zone5.delaytime = 0
+
+zone6.port = 6
+zone6.name =
+zone6.normalstate = 0
+zone6.currentstate =
+zone6.delaytime = 0
+zone6.nursetime = 0
+zone6.alltime = 0
+zone6.triggertype = 0
+zone6.online =
+zone6.delaytime = 0
+
+zone7.port = 7
+zone7.name =
+zone7.normalstate = 0
+zone7.currentstate =
+zone7.delaytime = 0
+zone7.nursetime = 0
+zone7.alltime = 0
+zone7.triggertype = 0
+zone7.online =
+zone7.delaytime = 0
+

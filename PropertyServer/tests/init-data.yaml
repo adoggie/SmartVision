@@ -1,0 +1,104 @@
+
+garden:
+  name : 'yxy'
+  id: '8888'
+  property_server_url: 'http://11.0.0.1:8088'
+  stream_server_url: '11.0.0.1'
+  property_call_server: '11.0.0.31'
+
+building_list:
+  - id : '1-1'
+    name: '1楼1单元'
+    garden_id: '8888'
+
+  - id: '1-2'
+    name: '1楼2单元'
+    garden_id: '8888'
+
+innerbox_list:
+  - ip: '11.21.1.11'
+    name: '1-1-1-101'
+    sn : ''
+    os : 'linux'
+    room_id: '1-1-1-101'
+    building_id: '1-1'
+    garden_id: '8888'
+
+  - ip: '11.21.2.11'
+    name: '1-1-2-101'
+    sn: ''
+    os: 'linux'
+    room_id: '1-1-2-101'
+    building_id: '1-1'
+    garden_id: '8888'
+
+outerbox_list:
+  - ip: '11.21.1.1'
+    name: '1-1-1'
+    sn: ''
+    os: 'linux'
+    type: 'B'
+    floor: 1
+    is_primary: 1
+    building_id: '1-1'
+    garden_id: '8888'
+
+  - ip: '11.21.1.2'
+    name: '1-1-1'
+    sn: ''
+    os: 'linux'
+    type: 'B'
+    floor: -1
+    is_primary: 1
+    building_id: '1-1'
+    garden_id: '8888'
+
+  - ip: '11.21.2.1'
+    name: '1-1-2'
+    sn: ''
+    os: 'linux'
+    type: 'B'
+    floor: 1
+    is_primary: 1
+    building_id: '1-2'
+    garden_id: '8888'
+
+  - ip: '11.21.2.2'
+    name: '1-1-2'
+    sn: ''
+    os: 'linux'
+    type: 'B'
+    floor: -1
+    is_primary: 1
+    building_id: '1-2'
+    garden_id: '8888'
+
+  - ip: '11.20.1.1'
+    name: '围墙机一'
+    sn: ''
+    os: 'linux'
+    type: 'A'
+    floor: 1
+    is_primary: 1
+    building_id: ''
+    garden_id: '8888'
+
+propcallapp_list:
+  - ip: '11.0.0.31'
+    name: '物业话机31'
+    sn: ''
+    os: 'android'
+    garden_id: '8888'
+
+  - ip: '11.0.0.32'
+    name: '物业话机32'
+    sn: ''
+    os: 'android'
+    garden_id: '8888'
+
+sentryapp_list:
+  - ip: '::ffff:127.0.0.1'
+    name: '岗亭机-1'
+    sn: ''
+    os: 'android'
+    garden_id: '8888'

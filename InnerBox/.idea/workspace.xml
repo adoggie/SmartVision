@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="innerproc" targetName="innerbox2" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2836c5eb-1a7d-4f81-983c-0ef227ce8c4a" name="Default" comment="fixed bugs">
+      <change beforePath="$PROJECT_DIR$/Makefile.arm" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.arm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/app.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base.h" beforeDir="false" afterPath="$PROJECT_DIR$/base.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/http.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seczone.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/seczone.cpp" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.62027353">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/InnerController.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3211">
+                  <caret line="169" selection-start-line="169" selection-end-line="169" />
+                  <folding>
+                    <element signature="e#45#73#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/http.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="152">
+                  <caret line="421" column="28" selection-start-line="421" selection-start-column="28" selection-end-line="421" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#1#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/seczone.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="256">
+                  <caret line="269" column="31" selection-start-line="269" selection-start-column="31" selection-end-line="269" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#0#20#0" expanded="true" />
+                    <element signature="e#173#200#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/seczone.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="207">
+                  <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/seczone.user">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="247">
+                  <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="133">
+                  <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/doc/(新)可视对讲系统_室内主机_REST接口_0.6_zhangbin_20190519.md">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="228">
+                  <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="304">
+                  <caret line="16" selection-start-line="16" selection-end-line="16" />
+                  <folding>
+                    <element signature="e#44#60#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/seczone.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="76">
+                  <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/settings.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="437">
+                  <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/doc/(新)可视对讲系统_室内主机_REST接口_0.6_zhangbin_20190519.md">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="13015">
+                  <caret line="685" column="4" selection-start-line="685" selection-start-column="4" selection-end-line="685" selection-end-column="17" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/message.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3344">
+                  <caret line="176" column="36" selection-start-line="176" selection-start-column="36" selection-end-line="176" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#0#20#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inner_device_mgr.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2280">
+                  <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/inner_device_mgr.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1064">
+                  <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/message.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1216">
+                  <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#101#118#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/call_manager.cpp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="377">
+                  <caret line="29" selection-start-line="29" selection-end-line="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/call_manager.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1387">
+                  <caret line="73" column="45" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="45" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$APPLICATION_CONFIG_DIR$/clion.vmoptions">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="114">
+                  <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>load_configs</find>
+      <find>seczone_password</find>
+      <find>seczone/passwd</find>
+      <find>save_conf</find>
+      <find>save_con</find>
+      <find>/param</find>
+      <find>/smartbox/api/seczone/params</find>
+      <find>/smartbox/api/opendoor/password</find>
+      <find>Base64::Encode(text,&amp;code);</find>
+      <find>openDoor</find>
+      <find>reboot</find>
+      <find>remov</find>
+      <find>settings</find>
+      <find>load</find>
+      <find>reset</find>
+      <find>seczone.</find>
+      <find>init</find>
+      <find>SEC_</find>
+      <find>settings.txt</find>
+      <find>dead</find>
+      <find>MESSAGE_JOIN_FAMILY</find>
+      <find>join</find>
+      <find>accept</find>
+      <find>for</find>
+      <find>conn_ids_</find>
+      <find>any</find>
+      <find>send</find>
+      <find>settings.us</find>
+      <find>smartbox/</find>
+      <find>handle_seczone_param_set</find>
+    </findStrings>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/http.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/version.h" />
+        <option value="$PROJECT_DIR$/http-api.h" />
+        <option value="$PROJECT_DIR$/http-api.cpp" />
+        <option value="$PROJECT_DIR$/sensor_message.cpp" />
+        <option value="$PROJECT_DIR$/sensor_message.h" />
+        <option value="$PROJECT_DIR$/event.cpp" />
+        <option value="$PROJECT_DIR$/event.h" />
+        <option value="$PROJECT_DIR$/service.h" />
+        <option value="$PROJECT_DIR$/config.h" />
+        <option value="$PROJECT_DIR$/opensource/jsoncpp-0.10.7/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/build/TODO.txt" />
+        <option value="$PROJECT_DIR$/build/test.c" />
+        <option value="$PROJECT_DIR$/TODO.txt" />
+        <option value="$PROJECT_DIR$/dist/README.txt" />
+        <option value="$PROJECT_DIR$/hex.h" />
+        <option value="$PROJECT_DIR$/logger.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/watchdog.cpp" />
+        <option value="$PROJECT_DIR$/seczone.user" />
+        <option value="$PROJECT_DIR$/sensor.h" />
+        <option value="$PROJECT_DIR$/utils.h" />
+        <option value="$PROJECT_DIR$/connection.cpp" />
+        <option value="$PROJECT_DIR$/dist/make-arm-dist.sh" />
+        <option value="$PROJECT_DIR$/settings.txt" />
+        <option value="$PROJECT_DIR$/dist/smartbox/nat-rules.txt" />
+        <option value="$PROJECT_DIR$/dist/smartbox/settings.txt" />
+        <option value="$PROJECT_DIR$/server.cpp" />
+        <option value="$PROJECT_DIR$/message.h" />
+        <option value="$PROJECT_DIR$/message.cpp" />
+        <option value="$PROJECT_DIR$/call_manager.h" />
+        <option value="$PROJECT_DIR$/inner_device_mgr.h" />
+        <option value="$PROJECT_DIR$/utils.cpp" />
+        <option value="$PROJECT_DIR$/sensor.cpp" />
+        <option value="$PROJECT_DIR$/call_manager.cpp" />
+        <option value="$PROJECT_DIR$/inner_device_mgr.cpp" />
+        <option value="$PROJECT_DIR$/config.cpp" />
+        <option value="$PROJECT_DIR$/doc/requirements.txt" />
+        <option value="$PROJECT_DIR$/http.h" />
+        <option value="$PROJECT_DIR$/seczone.h" />
+        <option value="$PROJECT_DIR$/InnerController.h" />
+        <option value="$PROJECT_DIR$/InnerController.cpp" />
+        <option value="$PROJECT_DIR$/seczone.txt" />
+        <option value="$PROJECT_DIR$/doc/(新)可视对讲系统_室内主机_REST接口_0.6_zhangbin_20190519.md" />
+        <option value="$PROJECT_DIR$/Makefile.arm" />
+        <option value="$PROJECT_DIR$/app.cpp" />
+        <option value="$APPLICATION_CONFIG_DIR$/clion.vmoptions" />
+        <option value="$PROJECT_DIR$/base.h" />
+        <option value="$PROJECT_DIR$/seczone.cpp" />
+        <option value="$PROJECT_DIR$/http.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="336" />
+    <option name="y" value="328" />
+    <option name="width" value="1680" />
+    <option name="height" value="985" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="innerproc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="innerproc_2.0" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doc" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="CMake Application.innerbox2">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="innerproc" RUN_TARGET_NAME="innerbox2" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="innerbox2" type="CMakeRunConfiguration" factoryName="Application" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="innerproc" TARGET_NAME="innerbox2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="innerproc" RUN_TARGET_NAME="innerbox2">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Build All" />
+      <item itemvalue="CMake Application.innerbox2" />
+    </list>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
+    <option name="ACTIVE_ACTIONS" value=",KIND,ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="$PROJECT_DIR$" />
+          <option name="myCopyRoot" value="$PROJECT_DIR$" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2836c5eb-1a7d-4f81-983c-0ef227ce8c4a" name="Default" comment="" />
+      <created>1552561445708</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552561445708</updated>
+      <workItem from="1552561446909" duration="87585000" />
+      <workItem from="1553594249010" duration="27509000" />
+      <workItem from="1555145715383" duration="38370000" />
+      <workItem from="1555569704314" duration="3749000" />
+      <workItem from="1557401833818" duration="1284000" />
+      <workItem from="1557403206273" duration="17498000" />
+      <workItem from="1558366138077" duration="345000" />
+      <workItem from="1558366848292" duration="1030000" />
+      <workItem from="1558453868598" duration="17000" />
+      <workItem from="1558454016231" duration="68000" />
+      <workItem from="1558521957973" duration="3925000" />
+      <workItem from="1558631221012" duration="17000" />
+      <workItem from="1558663534399" duration="479000" />
+      <workItem from="1558666041438" duration="971000" />
+      <workItem from="1558708632087" duration="3859000" />
+      <workItem from="1558766146782" duration="224000" />
+      <workItem from="1558770116051" duration="843000" />
+      <workItem from="1558771313276" duration="1308000" />
+      <workItem from="1558774798934" duration="744000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1552572541028</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552572541028</updated>
+    </task>
+    <task id="LOCAL-00002" summary="增加 version.h,http-api.cpp &#10;&#10;开始完善 smartbox 的 webapi 接口">
+      <created>1552641510038</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552641510038</updated>
+    </task>
+    <task id="LOCAL-00003">
+      <created>1552676250030</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552676250030</updated>
+    </task>
+    <task id="LOCAL-00004">
+      <created>1552676749027</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552676749027</updated>
+    </task>
+    <task id="LOCAL-00005">
+      <created>1552735613025</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552735613025</updated>
+    </task>
+    <task id="LOCAL-00006" summary="完成许多代码：&#10;1. sensor 传输协议处理&#10;2. 开始HTTP client 代码">
+      <created>1552760327030</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552760327030</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- 完成 http 上报事件的接口&#10;- 程序为开始调测">
+      <created>1552815113028</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1552815113028</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- 完成 http 上报事件的接口&#10;- 程序为开始调测">
+      <created>1552816583030</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552816583030</updated>
+    </task>
+    <task id="LOCAL-00009" summary="1. 报警增加 rand_key , 并且接收物业端下发开门指令">
+      <created>1552842285027</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552842285027</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1. 报警增加 rand_key , 并且接收物业端下发开门指令">
+      <created>1552842799027</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1552842799027</updated>
+    </task>
+    <task id="LOCAL-00011" summary="1. 防区 mode 改为mask掩码，读状态值，检测为报警，上报">
+      <created>1552895438027</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1552895438027</updated>
+    </task>
+    <task id="LOCAL-00012" summary="1.完成innerbox的http接口调试，功能通过">
+      <created>1552976360034</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552976360034</updated>
+    </task>
+    <task id="LOCAL-00013">
+      <created>1553674289029</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1553674289029</updated>
+    </task>
+    <task id="LOCAL-00014">
+      <created>1554827024031</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1554827024031</updated>
+    </task>
+    <task id="LOCAL-00015" summary="arm linux 下 获取 uuid 失败，故，去除 boost::uuid  ,采用当前时间timestamp">
+      <created>1554865153031</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1554865153031</updated>
+    </task>
+    <task id="LOCAL-00016" summary="增加hex编码和解码">
+      <created>1555081086035</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1555081086035</updated>
+    </task>
+    <task id="LOCAL-00017" summary="串口修改为16进制编码">
+      <created>1555165758034</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1555165758034</updated>
+    </task>
+    <task id="LOCAL-00018" summary="1.串口协议调试okay&#10;2.增加makefile编译文件">
+      <created>1555247627031</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1555247627031</updated>
+    </task>
+    <task id="LOCAL-00019" summary="1.增加调试看门狗功能 &#10;2.接收防区串口数据处理 &#10;3. 开门消息放置在配置文件中">
+      <created>1555433529029</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1555433529029</updated>
+    </task>
+    <task id="LOCAL-00020" summary="改进优化">
+      <created>1555484955028</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1555484955028</updated>
+    </task>
+    <task id="LOCAL-00021" summary="改进优化">
+      <created>1555575273029</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1555575273029</updated>
+    </task>
+    <task id="LOCAL-00022" summary="1.修复 读取 防区参数时的错误密码&#10;2.增加 设置开门密码，支持室外机开门请求&#10;3.增加 防区参数 重置接口">
+      <created>1558282942034</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1558282942034</updated>
+    </task>
+    <task id="LOCAL-00023" summary="1.修复 读取 防区参数时的错误密码&#10;2.增加 设置开门密码，支持室外机开门请求&#10;3.增加 防区参数 重置接口">
+      <created>1558522362029</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1558522362029</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="189825000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="6" y="23" width="1680" height="985" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.66206896" visible="true" weight="0.24725275" />
+      <window_info id="Structure" order="2" sideWeight="0.33793104" side_tool="true" visible="true" weight="0.24725275" />
+      <window_info anchor="bottom" id="CMake" order="0" weight="0.3287037" />
+      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.22467986" />
+      <window_info anchor="bottom" id="Version Control" order="3" weight="0.32945284" />
+      <window_info anchor="bottom" id="Messages" order="4" weight="0.21839081" />
+      <window_info anchor="bottom" id="SVN Repositories" order="5" weight="0.2467986" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.32945284" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.25287357" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="增加 version.h,http-api.cpp &#10;&#10;开始完善 smartbox 的 webapi 接口" />
+    <MESSAGE value="完成许多代码：&#10;1. sensor 传输协议处理&#10;2. 开始HTTP client 代码" />
+    <MESSAGE value="- 完成 http 上报事件的接口&#10;- 程序为开始调测" />
+    <MESSAGE value="1. 报警增加 rand_key , 并且接收物业端下发开门指令" />
+    <MESSAGE value="1. 防区 mode 改为mask掩码，读状态值，检测为报警，上报" />
+    <MESSAGE value="1.完成innerbox的http接口调试，功能通过" />
+    <MESSAGE value="arm linux 下 获取 uuid 失败，故，去除 boost::uuid  ,采用当前时间timestamp" />
+    <MESSAGE value="增加hex编码和解码" />
+    <MESSAGE value="串口修改为16进制编码" />
+    <MESSAGE value="1.串口协议调试okay&#10;2.增加makefile编译文件" />
+    <MESSAGE value="1.增加调试看门狗功能 &#10;2.接收防区串口数据处理 &#10;3. 开门消息放置在配置文件中" />
+    <MESSAGE value="改进优化" />
+    <MESSAGE value="1.修复 读取 防区参数时的错误密码&#10;2.增加 设置开门密码，支持室外机开门请求&#10;3.增加 防区参数 重置接口" />
+    <MESSAGE value="fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/sensor.cpp</url>
+          <line>171</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/seczone.cpp</url>
+          <line>434</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/seczone.cpp</url>
+          <line>409</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/sensor.cpp</url>
+          <line>168</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/seczone.cpp</url>
+          <line>456</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/http.cpp</url>
+          <line>636</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/http.cpp</url>
+          <line>662</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/http.cpp</url>
+          <line>643</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="seczone_settings_.seczone_mode_confs.size()" language="ObjectiveC" />
+        <watch expression="buf" language="ObjectiveC" />
+        <watch expression="bytes.size()" language="ObjectiveC" />
+        <watch expression="mg_mgr_min_timer()" language="ObjectiveC" />
+        <watch expression="mgr" language="ObjectiveC" />
+        <watch expression="size/2" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>size/2</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>mgr</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>mg_mgr_min_timer()</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bytes.size()</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bytes</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>buf</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>seczone_settings_.seczone_mode_confs.size()</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>seczone_settings_.seczone_mode_confs</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>crc2</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sensor_message.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sensor_message.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base64.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="96" column="14" selection-start-line="96" selection-start-column="14" selection-end-line="96" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1311">
+          <caret line="69" column="37" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/http-api.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="24" selection-start-line="7" selection-start-column="4" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/smartbox/inner-device.txt" />
+    <entry file="file://$PROJECT_DIR$/dist/smartbox/Links.txt" />
+    <entry file="file://$PROJECT_DIR$/settings_origin.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/make-arm-dist.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/boost/throw_exception.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/smartbox/nat-rules.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-471">
+          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/smartbox/settings.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sensor.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mongoose.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4821">
+          <caret line="2655" column="22" lean-forward="true" selection-start-line="2655" selection-start-column="22" selection-end-line="2655" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Developer/CommandLineTools/usr/include/c++/v1/string">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="1627" selection-start-line="1627" selection-end-line="1627" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sensor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="41" column="6" lean-forward="true" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/version.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/(新)可视对讲系统_室内主机_REST接口_0.5_zhangbin_20190316.md" />
+    <entry file="file://$PROJECT_DIR$/doc/(新)可视对讲系统_物业服务器_REST接口_0.6_zhangbin_20190412.md" />
+    <entry file="file://$PROJECT_DIR$/http.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="69" column="93" lean-forward="true" selection-start-line="67" selection-start-column="4" selection-end-line="69" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InnerController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1843">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="27" />
+          <folding>
+            <element signature="e#118#135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logger.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1520">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="e#95#112#0" expanded="true" />
+            <element signature="e#1502#1717#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Makefile.arm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InnerController.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3211">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+          <folding>
+            <element signature="e#45#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#44#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seczone.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/(新)可视对讲系统_室内主机_REST接口_0.6_zhangbin_20190519.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/message.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3344">
+          <caret line="176" column="36" selection-start-line="176" selection-start-column="36" selection-end-line="176" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inner_device_mgr.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2280">
+          <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inner_device_mgr.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/message.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1216">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+          <folding>
+            <element signature="e#101#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/call_manager.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1387">
+          <caret line="73" column="45" selection-start-line="73" selection-start-column="30" selection-end-line="73" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/clion.vmoptions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/call_manager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seczone.user">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seczone.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="269" column="31" selection-start-line="269" selection-start-column="31" selection-end-line="269" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#173#200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seczone.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="66" column="16" selection-start-line="66" selection-start-column="16" selection-end-line="66" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/http.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="421" column="28" selection-start-line="421" selection-start-column="28" selection-end-line="421" selection-end-column="28" />
+          <folding>
+            <element signature="e#1#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

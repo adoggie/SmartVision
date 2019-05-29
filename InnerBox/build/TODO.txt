@@ -1,0 +1,34 @@
+
+
+
+* 已完成
+? 未完成
+=============
+
+2019.3.16
+=============
+
+* 1. * logger add UDP handler
+* 2. http-client , 请求上传到物业服务器
+* 3. * 编写串口模块上下行消息编码代码  , sensor (hex,base64,md5)
+* 4. * sensor 定时发送heartbeat
+* 5. 加入  crc16 校验代码
+    https://github.com/gityf/crc
+
+? 6. 增加 box 到单元机和物业服务器的长连接状态接口
+？7. 读取设备硬件编码 ， 设备reboot代码
+
+
+编译 :
+boost1.66+
+
+
+udp logger Test
+=============
+server:  nc -luk 9906
+client:  nc -u localhost 9906
+
+
+arm设备无法运行链接boost的程序
+=============
+arm-linux-gnueabi-g++  test.c -I/usr/local/include -L/usr/local/lib -std=c++11 -o aa -static -lboost_system -lpthread

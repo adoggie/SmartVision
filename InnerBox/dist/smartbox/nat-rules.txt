@@ -1,0 +1,8 @@
+iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 7895 -j DNAT --to-destination 11.0.0.1:8088
+iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 7894 -j DNAT --to-destination 11.0.0.1:1935
+iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 7896 -j DNAT --to-destination 11.21.1.1:8554
+iptables -t nat -F
+echo 1 >/proc/sys/net/ipv4/ip_forward
+
+
+iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 17894 -j DNAT --to-destination 11.0.0.1:1935
